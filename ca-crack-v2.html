@@ -1,0 +1,1556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#080b14">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="CA Crack">
+<meta name="description" content="India ka #1 AI CA Exam Prep — Foundation, Inter, Final">
+<title>CA Crack — AI Tutor</title>
+<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Satoshi:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #080b14; --bg2: #0d1120; --bg3: #131929; --card: #111827;
+  --border: rgba(255,255,255,0.06); --border2: rgba(255,255,255,0.12);
+  --text: #eef2ff; --text2: #8892b0; --text3: #4a5270;
+  --gold: #f5c842; --gold2: #c9982a; --goldbg: rgba(245,200,66,0.1);
+  --blue: #4f8eff; --blue2: #2563eb; --bluebg: rgba(79,142,255,0.1);
+  --green: #22d3a0; --greenbg: rgba(34,211,160,0.1);
+  --red: #ff5f5f; --redbg: rgba(255,95,95,0.1);
+  --purple: #a78bfa; --purplebg: rgba(167,139,250,0.1);
+  --orange: #fb923c; --orangebg: rgba(251,146,60,0.1);
+  --r: 14px; --rs: 10px; --rl: 20px;
+  --fh: 'Clash Display', sans-serif; --fb: 'Satoshi', sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--text);font-family:var(--fb);font-size:15px}
+::-webkit-scrollbar{display:none}
+
+/* LAYOUT */
+.app{display:flex;flex-direction:column;height:100vh;max-width:430px;margin:0 auto;position:relative;overflow:hidden}
+.screen{flex:1;overflow-y:auto;overflow-x:hidden;padding-bottom:72px}
+.page{display:none}.page.active{display:block}
+
+/* NAV */
+.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:430px;background:rgba(8,11,20,0.95);backdrop-filter:blur(20px);border-top:1px solid var(--border);display:flex;z-index:100;padding-bottom:env(safe-area-inset-bottom)}
+.nb{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:10px 4px 8px;cursor:pointer;border:none;background:none;color:var(--text3);font-family:var(--fb);font-size:9px;font-weight:500;transition:color 0.2s;letter-spacing:0.02em}
+.nb.active{color:var(--gold)}.nb svg{width:20px;height:20px}
+.nb .nb-dot{width:4px;height:4px;border-radius:50%;background:var(--gold);margin-top:1px;opacity:0;transition:opacity 0.2s}
+.nb.active .nb-dot{opacity:1}
+
+/* TYPOGRAPHY */
+.h1{font-family:var(--fh);font-size:28px;font-weight:700;line-height:1.1;letter-spacing:-0.02em}
+.h2{font-family:var(--fh);font-size:20px;font-weight:600;letter-spacing:-0.01em}
+.h3{font-family:var(--fh);font-size:16px;font-weight:600}
+.caption{font-size:11px;color:var(--text3);letter-spacing:0.05em;text-transform:uppercase;font-weight:500}
+.body{font-size:14px;color:var(--text2);line-height:1.6}
+
+/* CARDS */
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px;margin:0 14px 10px}
+.card-flat{background:var(--bg3);border-radius:var(--rs);padding:12px 14px}
+
+/* BADGE */
+.badge{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:600;padding:3px 8px;border-radius:20px;letter-spacing:0.03em}
+.bg{background:var(--greenbg);color:var(--green)}
+.bb{background:var(--bluebg);color:var(--blue)}
+.bgold{background:var(--goldbg);color:var(--gold)}
+.bred{background:var(--redbg);color:var(--red)}
+.bpurple{background:var(--purplebg);color:var(--purple)}
+.borange{background:var(--orangebg);color:var(--orange)}
+
+/* BUTTONS */
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:14px;border-radius:var(--rs);border:none;font-family:var(--fb);font-size:14px;font-weight:600;cursor:pointer;transition:all 0.15s;letter-spacing:0.01em}
+.btn:active{transform:scale(0.97)}
+.btn-gold{background:var(--gold);color:#0a0800}
+.btn-blue{background:var(--blue);color:white}
+.btn-ghost{background:transparent;color:var(--text2);border:1px solid var(--border2)}
+.btn-ghost:active{background:var(--bg3)}
+.btn-sm{padding:9px 16px;font-size:13px;border-radius:var(--rs);width:auto}
+
+/* PROGRESS */
+.pbar{background:var(--bg3);border-radius:99px;height:5px;overflow:hidden}
+.pfill{height:100%;border-radius:99px;transition:width 0.5s ease}
+
+/* DIVIDER */
+.divider{height:1px;background:var(--border);margin:0 14px 10px}
+.section-hd{padding:16px 14px 8px;display:flex;align-items:center;justify-content:space-between}
+
+/* ONBOARDING */
+#onboarding{position:fixed;inset:0;background:var(--bg);z-index:500;overflow-y:auto;display:flex;flex-direction:column}
+.ob-screen{display:none;flex:1;flex-direction:column;padding:24px 20px 100px;animation:slideUp 0.35s ease}
+.ob-screen.active{display:flex}
+@keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.ob-progress{display:flex;gap:6px;padding:60px 20px 0}
+.ob-dot{flex:1;height:3px;border-radius:99px;background:var(--bg3);transition:background 0.3s}
+.ob-dot.done{background:var(--gold)}
+.ob-icon{font-size:52px;margin:24px 0 16px}
+.ob-title{font-family:var(--fh);font-size:26px;font-weight:700;line-height:1.15;letter-spacing:-0.02em;margin-bottom:10px}
+.ob-sub{font-size:14px;color:var(--text2);line-height:1.6;margin-bottom:28px}
+.ob-opts{display:flex;flex-direction:column;gap:10px}
+.ob-opt{background:var(--bg3);border:1.5px solid var(--border);border-radius:var(--r);padding:16px;cursor:pointer;transition:all 0.15s;display:flex;align-items:center;gap:14px}
+.ob-opt:active{border-color:var(--gold);background:var(--goldbg)}
+.ob-opt.selected{border-color:var(--gold);background:var(--goldbg)}
+.ob-opt-icon{font-size:24px;width:40px;text-align:center;flex-shrink:0}
+.ob-opt-text{flex:1}
+.ob-opt-title{font-family:var(--fh);font-size:15px;font-weight:600;margin-bottom:2px}
+.ob-opt-sub{font-size:12px;color:var(--text2)}
+.ob-check{width:22px;height:22px;border-radius:50%;border:1.5px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:12px;transition:all 0.2s;flex-shrink:0}
+.ob-opt.selected .ob-check{background:var(--gold);border-color:var(--gold);color:#0a0800}
+.ob-footer{position:fixed;bottom:0;left:0;right:0;max-width:430px;margin:0 auto;padding:16px 20px 32px;background:linear-gradient(transparent,var(--bg) 30%)}
+.ob-input{background:var(--bg3);border:1.5px solid var(--border2);border-radius:var(--rs);padding:14px 16px;color:var(--text);font-family:var(--fb);font-size:15px;outline:none;width:100%;margin-bottom:12px;transition:border-color 0.2s}
+.ob-input:focus{border-color:var(--gold)}
+.ob-input::placeholder{color:var(--text3)}
+
+/* HOME HERO */
+.hero{margin:16px 14px 0;border-radius:var(--rl);padding:20px;position:relative;overflow:hidden;min-height:160px}
+.hero-mesh{position:absolute;inset:0;opacity:0.4}
+.hero-content{position:relative;z-index:1}
+.hero-greeting{font-size:12px;color:rgba(255,255,255,0.6);font-weight:500;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:6px}
+.hero-name{font-family:var(--fh);font-size:24px;font-weight:700;line-height:1.1;margin-bottom:4px}
+.hero-level{display:inline-flex;align-items:center;gap:6px;font-size:12px;padding:4px 10px;border-radius:20px;background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);margin-bottom:16px}
+.countdown-row{display:flex;gap:12px}
+.countdown-item{text-align:center}
+.countdown-num{font-family:var(--fh);font-size:28px;font-weight:700;line-height:1;color:white}
+.countdown-label{font-size:9px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.05em}
+
+/* STATS ROW */
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:12px 14px 0}
+.stat{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:12px;text-align:center}
+.stat-val{font-family:var(--fh);font-size:24px;font-weight:700;line-height:1}
+.stat-label{font-size:10px;color:var(--text3);margin-top:3px;font-weight:500}
+
+/* TODAY TASKS */
+.task-item{padding:12px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--border);transition:background 0.15s}
+.task-item:last-child{border-bottom:none}
+.task-item:active{background:var(--bg3)}
+.task-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.task-info{flex:1;min-width:0}
+.task-time{font-size:11px;color:var(--text3);margin-bottom:2px}
+.task-name{font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.task-check{width:24px;height:24px;border-radius:50%;border:1.5px solid var(--border2);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:all 0.2s;font-size:11px}
+.task-check.done{background:var(--green);border-color:var(--green);color:white}
+
+/* GAMIFICATION */
+.xp-bar-wrap{padding:0 14px;margin-bottom:4px}
+.xp-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.xp-label{font-size:11px;color:var(--text3)}
+.xp-val{font-size:11px;color:var(--gold);font-weight:600}
+.level-badge{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.level-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px}
+.level-name{font-family:var(--fh);font-size:14px;font-weight:600}
+.level-sub{font-size:11px;color:var(--text3)}
+.badges-row{display:flex;gap:8px;flex-wrap:wrap;padding:0 14px;margin-bottom:12px}
+.badge-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;border:1.5px solid var(--border);transition:all 0.2s;cursor:pointer;position:relative}
+.badge-icon.earned{border-color:var(--gold);background:var(--goldbg)}
+.badge-icon.locked{opacity:0.35}
+
+/* SUBJECTS */
+.subj-item{margin:0 14px 10px;background:var(--card);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;cursor:pointer;transition:border-color 0.2s}
+.subj-item:active{border-color:var(--border2)}
+.subj-top{padding:14px;display:flex;align-items:center;gap:12px}
+.subj-icon{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.subj-info{flex:1;min-width:0}
+.subj-name{font-family:var(--fh);font-size:14px;font-weight:600;margin-bottom:2px}
+.subj-meta{font-size:11px;color:var(--text2)}
+.subj-bottom{padding:0 14px 12px;display:flex;align-items:center;gap:10px}
+.subj-pct{font-size:11px;font-weight:600;color:var(--text3);width:28px}
+
+/* STUDY TOOLS */
+.tools-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 14px;margin-bottom:12px}
+.tool-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:16px;cursor:pointer;transition:all 0.15s;text-align:center}
+.tool-card:active{border-color:var(--border2);background:var(--bg3)}
+.tool-icon{font-size:28px;margin-bottom:8px}
+.tool-name{font-family:var(--fh);font-size:13px;font-weight:600;margin-bottom:3px}
+.tool-sub{font-size:11px;color:var(--text3)}
+
+/* CHAT */
+.chat-wrap{display:flex;flex-direction:column;height:calc(100vh - 72px)}
+.chat-header{padding:12px 14px;border-bottom:1px solid var(--border);background:var(--bg2);display:flex;align-items:center;gap:10px;flex-shrink:0}
+.chat-avatar{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--blue),var(--purple));display:flex;align-items:center;justify-content:center;font-size:18px}
+.chat-title{font-family:var(--fh);font-size:15px;font-weight:600}
+.chat-status{font-size:11px;color:var(--green)}
+.chips-wrap{overflow-x:auto;display:flex;gap:8px;padding:10px 14px 8px;flex-shrink:0;border-bottom:1px solid var(--border)}
+.chip{flex-shrink:0;padding:7px 13px;border-radius:20px;background:var(--bg3);border:1px solid var(--border2);color:var(--text2);font-size:12px;cursor:pointer;font-family:var(--fb);white-space:nowrap;transition:all 0.15s}
+.chip:active{background:var(--bluebg);border-color:var(--blue);color:var(--blue)}
+.msgs{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px}
+.msg-wrap{display:flex;flex-direction:column;gap:3px}
+.msg-wrap.user{align-items:flex-end}.msg-wrap.ai{align-items:flex-start}
+.bubble{max-width:88%;padding:10px 14px;font-size:14px;line-height:1.55}
+.msg-wrap.ai .bubble{background:var(--bg3);border:1px solid var(--border);border-radius:4px 14px 14px 14px;color:var(--text)}
+.msg-wrap.user .bubble{background:linear-gradient(135deg,var(--blue2),var(--blue));border-radius:14px 4px 14px 14px;color:white}
+.msg-time{font-size:10px;color:var(--text3);padding:0 4px}
+.typing-ind{display:flex;gap:4px;padding:10px 14px;background:var(--bg3);border:1px solid var(--border);border-radius:4px 14px 14px 14px;width:fit-content}
+.typing-ind span{width:6px;height:6px;border-radius:50%;background:var(--text3);animation:blink 1.2s infinite}
+.typing-ind span:nth-child(2){animation-delay:0.2s}.typing-ind span:nth-child(3){animation-delay:0.4s}
+@keyframes blink{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}
+.input-area{padding:10px 14px 12px;border-top:1px solid var(--border);background:var(--bg2);flex-shrink:0}
+.input-row{display:flex;gap:8px;align-items:flex-end}
+.chat-in{flex:1;background:var(--bg3);border:1px solid var(--border2);border-radius:20px;padding:10px 16px;color:var(--text);font-family:var(--fb);font-size:14px;outline:none;resize:none;max-height:100px;transition:border-color 0.2s}
+.chat-in:focus{border-color:var(--blue)}
+.chat-in::placeholder{color:var(--text3)}
+.send-btn{width:40px;height:40px;border-radius:50%;background:var(--gold);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all 0.15s}
+.send-btn:active{background:var(--gold2);transform:scale(0.94)}
+.send-btn svg{width:16px;height:16px;fill:#0a0800}
+
+/* MOCK TEST */
+.mock-header{padding:14px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:var(--bg2)}
+.timer-display{font-family:var(--fh);font-size:22px;font-weight:700}
+.timer-display.warning{color:var(--red)}
+.q-counter{font-size:12px;color:var(--text2)}
+.mock-q{padding:16px 14px;font-size:15px;font-weight:500;line-height:1.5;border-bottom:1px solid var(--border)}
+.mock-opts{padding:12px 14px;display:flex;flex-direction:column;gap:8px}
+.mock-opt{display:flex;align-items:center;gap:12px;padding:13px 14px;background:var(--bg3);border:1.5px solid var(--border);border-radius:var(--rs);cursor:pointer;transition:all 0.15s;font-size:14px}
+.mock-opt:active{border-color:var(--border2)}
+.mock-opt.correct{border-color:var(--green);background:var(--greenbg);color:var(--green)}
+.mock-opt.wrong{border-color:var(--red);background:var(--redbg);color:var(--red)}
+.mock-opt.disabled{cursor:default}
+.opt-letter{width:26px;height:26px;border-radius:50%;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
+.mock-exp{margin:0 14px 14px;padding:14px;background:var(--bg3);border-radius:var(--rs);font-size:13px;color:var(--text2);line-height:1.6;display:none;border-left:3px solid var(--gold)}
+.mock-nav{padding:12px 14px;display:flex;gap:8px;border-top:1px solid var(--border)}
+
+/* HANDWRITING */
+.hw-prompt{padding:16px 14px;background:var(--goldbg);border-bottom:1px solid rgba(245,200,66,0.15)}
+.hw-prompt-text{font-size:14px;font-weight:500;line-height:1.5;color:var(--text)}
+.hw-steps{padding:14px;display:flex;flex-direction:column;gap:10px}
+.hw-step{background:var(--card);border:1px solid var(--border);border-radius:var(--rs);padding:14px;display:flex;gap:12px}
+.hw-step-num{width:28px;height:28px;border-radius:50%;background:var(--gold);color:#0a0800;display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-size:13px;font-weight:700;flex-shrink:0}
+.hw-step-text{font-size:13px;color:var(--text2);line-height:1.5}
+
+/* PLAN PAGE */
+.phase-card{margin:0 14px 10px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border)}
+.phase-bar{height:4px}
+.phase-inner{padding:14px;background:var(--card)}
+.phase-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.phase-num{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-size:14px;font-weight:700;flex-shrink:0}
+.phase-title{font-family:var(--fh);font-size:14px;font-weight:600}
+.phase-dates{font-size:11px;color:var(--text3);margin-top:1px}
+.phase-body{font-size:13px;color:var(--text2);line-height:1.55}
+
+/* MODAL BOTTOM SHEET */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:300;opacity:0;pointer-events:none;transition:opacity 0.25s;display:flex;align-items:flex-end;justify-content:center}
+.overlay.open{opacity:1;pointer-events:all}
+.sheet{background:var(--bg2);border-radius:24px 24px 0 0;padding:20px 20px 40px;width:100%;max-width:430px;transform:translateY(100%);transition:transform 0.3s cubic-bezier(0.32,0.72,0,1);max-height:90vh;overflow-y:auto}
+.overlay.open .sheet{transform:translateY(0)}
+.sheet-handle{width:36px;height:4px;border-radius:2px;background:var(--border2);margin:0 auto 20px}
+.sheet-title{font-family:var(--fh);font-size:19px;font-weight:700;margin-bottom:14px}
+
+/* TOAST */
+.toast{position:fixed;top:env(safe-area-inset-top,20px);left:50%;transform:translateX(-50%) translateY(calc(-100% - 20px));background:var(--bg3);border:1px solid var(--border2);border-radius:30px;padding:10px 18px;font-size:13px;font-weight:500;color:var(--text);z-index:600;transition:transform 0.3s cubic-bezier(0.32,0.72,0,1);white-space:nowrap;display:flex;align-items:center;gap:8px;max-width:90vw}
+.toast.show{transform:translateX(-50%) translateY(20px)}
+
+/* NOTIFICATION BANNER */
+.notif-banner{margin:12px 14px;border-radius:var(--rs);padding:12px 14px;background:var(--goldbg);border:1px solid rgba(245,200,66,0.2);display:flex;align-items:center;gap:10px;cursor:pointer}
+.notif-icon{font-size:20px;flex-shrink:0}
+.notif-text{flex:1;font-size:13px;color:var(--text2);line-height:1.4}
+.notif-text b{color:var(--text);font-weight:600}
+
+/* LEADERBOARD */
+.lb-item{padding:12px 14px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--border)}
+.lb-rank{font-family:var(--fh);font-size:16px;font-weight:700;width:28px;text-align:center;flex-shrink:0}
+.lb-avatar{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.lb-info{flex:1}
+.lb-name{font-size:14px;font-weight:500}
+.lb-sub{font-size:11px;color:var(--text3);margin-top:1px}
+.lb-xp{font-family:var(--fh);font-size:14px;font-weight:700;color:var(--gold)}
+.lb-you{border-left:3px solid var(--gold);background:var(--goldbg)}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.fade-up{animation:fadeUp 0.3s ease forwards}
+@keyframes pop{0%,100%{transform:scale(1)}50%{transform:scale(1.15)}}
+.pop{animation:pop 0.3s ease}
+
+/* PURCHASE SCREEN */
+.price-card{margin:0 14px 10px;border-radius:var(--rl);border:1.5px solid var(--gold);background:var(--goldbg);padding:20px}
+.price-val{font-family:var(--fh);font-size:42px;font-weight:700;color:var(--gold);line-height:1}
+.price-period{font-size:14px;color:var(--text2);margin-top:4px}
+.feature-list{display:flex;flex-direction:column;gap:8px;margin:16px 0}
+.feature-item{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--text)}
+.feature-check{width:20px;height:20px;border-radius:50%;background:var(--greenbg);color:var(--green);display:flex;align-items:center;justify-content:center;font-size:11px;flex-shrink:0}
+
+input[type=range]{-webkit-appearance:none;width:100%;height:4px;background:var(--bg3);border-radius:2px;outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--gold);cursor:pointer}
+select{background:var(--bg3);border:1.5px solid var(--border2);border-radius:var(--rs);padding:13px 14px;color:var(--text);font-family:var(--fb);font-size:14px;outline:none;width:100%;margin-bottom:12px;cursor:pointer}
+select option{background:var(--bg2)}
+</style>
+</head>
+<body>
+<div class="app">
+
+<!-- ============ ONBOARDING ============ -->
+<div id="onboarding">
+  <div class="ob-progress" id="ob-progress">
+    <div class="ob-dot done" id="od0"></div>
+    <div class="ob-dot" id="od1"></div>
+    <div class="ob-dot" id="od2"></div>
+    <div class="ob-dot" id="od3"></div>
+    <div class="ob-dot" id="od4"></div>
+    <div class="ob-dot" id="od5"></div>
+    <div class="ob-dot" id="od6"></div>
+  </div>
+
+  <!-- Step 0: Welcome -->
+  <div class="ob-screen active" id="ob0">
+    <div class="ob-icon">🎯</div>
+    <div class="ob-title">CA Crack<br>— AI Tutor</div>
+    <div class="ob-sub">India ka pehla AI-powered CA prep system. Coaching nahi, <b style="color:var(--gold)">khatarnak taiyari</b> — Foundation se Final tak.</div>
+    <div class="ob-sub" style="margin-top:12px;">Working students ke liye. Limited time ke liye. Financial weak students ke liye.</div>
+    <div class="ob-footer">
+      <button class="btn btn-gold" onclick="obNext()">Shuru Karo →</button>
+    </div>
+  </div>
+
+  <!-- Step 1: Name -->
+  <div class="ob-screen" id="ob1">
+    <div class="ob-icon">👤</div>
+    <div class="ob-title">Aapka naam kya hai?</div>
+    <div class="ob-sub">Personalized experience ke liye — bilkul aapke hisaab se.</div>
+    <input class="ob-input" id="ob-name" type="text" placeholder="Apna naam likho..." maxlength="30">
+    <div class="ob-sub" style="margin-top:4px;font-size:12px;">Medium of study?</div>
+    <div class="ob-opts" style="margin-top:8px;">
+      <div class="ob-opt selected" id="lang-hindi" onclick="selectLang('hindi')">
+        <div class="ob-opt-icon">🇮🇳</div>
+        <div class="ob-opt-text"><div class="ob-opt-title">Hindi Medium</div><div class="ob-opt-sub">Hindi mein samjhao, English mein likhna sikhao</div></div>
+        <div class="ob-check">✓</div>
+      </div>
+      <div class="ob-opt" id="lang-english" onclick="selectLang('english')">
+        <div class="ob-opt-icon">🇬🇧</div>
+        <div class="ob-opt-text"><div class="ob-opt-title">English Medium</div><div class="ob-opt-sub">English mein explain karo</div></div>
+        <div class="ob-check"></div>
+      </div>
+      <div class="ob-opt" id="lang-hinglish" onclick="selectLang('hinglish')">
+        <div class="ob-opt-icon">🔀</div>
+        <div class="ob-opt-text"><div class="ob-opt-title">Hinglish (Mix)</div><div class="ob-opt-sub">Hindi + English dono — best of both</div></div>
+        <div class="ob-check"></div>
+      </div>
+    </div>
+    <div class="ob-footer"><button class="btn btn-gold" onclick="obNext()">Aage →</button></div>
+  </div>
+
+  <!-- Step 2: CA Level -->
+  <div class="ob-screen" id="ob2">
+    <div class="ob-icon">📚</div>
+    <div class="ob-title">Konsa CA level prepare kar rahe ho?</div>
+    <div class="ob-sub">Aapke level ke hisaab se poora system set hoga.</div>
+    <div class="ob-opts">
+      <div class="ob-opt" id="lvl-foundation" onclick="selectLevel('foundation')">
+        <div class="ob-opt-icon">🌱</div>
+        <div class="ob-opt-text"><div class="ob-opt-title">CA Foundation</div><div class="ob-opt-sub">4 papers · Entry level · 10+2 ke baad</div></div>
+        <div class="ob-check"></div>
+      </div>
+      <div class="ob-opt" id="lvl-inter" onclick="selectLevel('inter')">
+        <div class="ob-opt-icon">📊</div>
+        <div class="ob-opt-text"><div class="ob-opt-title">CA Intermediate</div><div class="ob-opt-sub">6 papers · 2 groups · Foundation/Direct Entry</div></div>
+        <div class="ob-check"></div>
+      </div>
+      <div class="ob-opt" id="lvl-final" onclick="selectLevel('final')">
+        <div class="ob-opt-icon">🏆</div>
+        <div class="ob-opt-text"><div class="ob-opt-title">CA Final</div><div class="ob-opt-sub">6 papers · Last stage · Articleship ke saath</div></div>
+        <div class="ob-check"></div>
+      </div>
+    </div>
+    <div class="ob-footer"><button class="btn btn-gold" onclick="obNext()">Aage →</button></div>
+  </div>
+
+  <!-- Step 3: Attempt & Group -->
+  <div class="ob-screen" id="ob3">
+    <div class="ob-icon">🗓️</div>
+    <div class="ob-title">Konsa attempt target hai?</div>
+    <div class="ob-sub">Exam schedule set karte hain toh countdown sahi hoga.</div>
+    <div style="margin-bottom:16px;">
+      <div class="ob-sub" style="margin-bottom:8px;font-size:12px;color:var(--text3);">TARGET ATTEMPT</div>
+      <select id="ob-attempt">
+        <option value="jan2027">January 2027</option>
+        <option value="may2027">May 2027</option>
+        <option value="sep2027">September 2027</option>
+        <option value="jan2028">January 2028</option>
+      </select>
+    </div>
+    <div class="ob-sub" style="margin-bottom:8px;font-size:12px;color:var(--text3);">GROUP PREFERENCE</div>
+    <div class="ob-opts">
+      <div class="ob-opt" id="grp-both" onclick="selectGroup('both')">
+        <div class="ob-opt-icon">⚡</div>
+        <div class="ob-opt-text"><div class="ob-opt-title">Both Groups Ek Saath</div><div class="ob-opt-sub">Zyada syllabus par ek hi baar mein — ambitious!</div></div>
+        <div class="ob-check"></div>
+      </div>
+      <div class="ob-opt" id="grp-g1" onclick="selectGroup('g1')">
+        <div class="ob-opt-icon">1️⃣</div>
+        <div class="ob-opt-text"><div class="ob-opt-title">Sirf Group 1</div><div class="ob-opt-sub">3 papers pehle — safe approach</div></div>
+        <div class="ob-check"></div>
+      </div>
+      <div class="ob-opt" id="grp-g2" onclick="selectGroup('g2')">
+        <div class="ob-opt-icon">2️⃣</div>
+        <div class="ob-opt-text"><div class="ob-opt-title">Sirf Group 2</div><div class="ob-opt-sub">3 papers pehle — safe approach</div></div>
+        <div class="ob-check"></div>
+      </div>
+    </div>
+    <div class="ob-footer"><button class="btn btn-gold" onclick="obNext()">Aage →</button></div>
+  </div>
+
+  <!-- Step 4: Job & Time -->
+  <div class="ob-screen" id="ob4">
+    <div class="ob-icon">⏰</div>
+    <div class="ob-title">Rozana kitna time milta hai padhne ka?</div>
+    <div class="ob-sub">Bilkul sach batao — usi hisaab se realistic plan banega.</div>
+    <div style="margin-bottom:20px;">
+      <div class="ob-sub" style="margin-bottom:8px;font-size:12px;color:var(--text3);">DAILY STUDY TIME</div>
+      <div style="text-align:center;margin-bottom:10px;">
+        <span style="font-family:var(--fh);font-size:36px;font-weight:700;color:var(--gold)" id="time-display">3</span>
+        <span style="font-size:14px;color:var(--text2);margin-left:4px;">hours</span>
+      </div>
+      <input type="range" min="1" max="10" value="3" id="time-slider" oninput="document.getElementById('time-display').textContent=this.value">
+    </div>
+    <div class="ob-sub" style="margin-bottom:8px;font-size:12px;color:var(--text3);">JOB SITUATION</div>
+    <div class="ob-opts">
+      <div class="ob-opt selected" id="job-working" onclick="selectJob('working')">
+        <div class="ob-opt-icon">💼</div>
+        <div class="ob-opt-text"><div class="ob-opt-title">Working (Job ke saath)</div><div class="ob-opt-sub">Limited time, high pressure — special plan chahiye</div></div>
+        <div class="ob-check">✓</div>
+      </div>
+      <div class="ob-opt" id="job-student" onclick="selectJob('student')">
+        <div class="ob-opt-icon">🎓</div>
+        <div class="ob-opt-text"><div class="ob-opt-title">Full-time Student</div><div class="ob-opt-sub">Sirf padhai — zyada time available</div></div>
+        <div class="ob-check"></div>
+      </div>
+      <div class="ob-opt" id="job-articleship" onclick="selectJob('articleship')">
+        <div class="ob-opt-icon">🏢</div>
+        <div class="ob-opt-text"><div class="ob-opt-title">Articleship ke saath</div><div class="ob-opt-sub">CA Final — practical training + study</div></div>
+        <div class="ob-check"></div>
+      </div>
+    </div>
+    <div class="ob-footer"><button class="btn btn-gold" onclick="obNext()">Aage →</button></div>
+  </div>
+
+  <!-- Step 5: Background -->
+  <div class="ob-screen" id="ob5">
+    <div class="ob-icon">🧠</div>
+    <div class="ob-title">Pahle yeh subject padha hai?</div>
+    <div class="ob-sub">Aapki existing knowledge samjhein — faaltu repeat nahi karein.</div>
+    <div class="ob-opts" id="bg-opts">
+      <div class="ob-opt" id="bg-fresh" onclick="selectBg('fresh')">
+        <div class="ob-opt-icon">🌱</div>
+        <div class="ob-opt-text"><div class="ob-opt-title">Bilkul Fresh Start</div><div class="ob-opt-sub">Koi base nahi — zero se shuru</div></div>
+        <div class="ob-check"></div>
+      </div>
+      <div class="ob-opt" id="bg-some" onclick="selectBg('some')">
+        <div class="ob-opt-icon">📖</div>
+        <div class="ob-opt-text"><div class="ob-opt-title">Kuch Topics Cover Kiye</div><div class="ob-opt-sub">Thoda padha hai — continue karna hai</div></div>
+        <div class="ob-check"></div>
+      </div>
+      <div class="ob-opt" id="bg-work" onclick="selectBg('work')">
+        <div class="ob-opt-icon">💼</div>
+        <div class="ob-opt-text"><div class="ob-opt-title">Practical Experience Hai</div><div class="ob-opt-sub">Kaam se pata hai kuch cheezein</div></div>
+        <div class="ob-check"></div>
+      </div>
+      <div class="ob-opt" id="bg-repeat" onclick="selectBg('repeat')">
+        <div class="ob-opt-icon">🔄</div>
+        <div class="ob-opt-text"><div class="ob-opt-title">Pehle Attempt Fail Hua</div><div class="ob-opt-sub">Dobara dena hai — weak areas pe focus</div></div>
+        <div class="ob-check"></div>
+      </div>
+    </div>
+    <div class="ob-footer"><button class="btn btn-gold" onclick="obNext()">Aage →</button></div>
+  </div>
+
+  <!-- Step 6: Ready -->
+  <div class="ob-screen" id="ob6">
+    <div class="ob-icon">🚀</div>
+    <div class="ob-title" id="ob-ready-title">Taiyar hain!</div>
+    <div class="ob-sub" id="ob-ready-sub">Aapka personalized CA prep plan ready ho raha hai...</div>
+    <div id="plan-preview" style="margin-top:16px;display:flex;flex-direction:column;gap:10px;"></div>
+    <div class="ob-footer">
+      <button class="btn btn-gold" onclick="finishOnboarding()">Dashboard Kholo 🎯</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ MAIN APP ============ -->
+<div id="main-app" style="display:none;">
+
+<!-- HOME PAGE -->
+<div id="page-home" class="page screen active">
+  <div class="hero" id="hero-card">
+    <canvas class="hero-mesh" id="hero-canvas"></canvas>
+    <div class="hero-content">
+      <div class="hero-greeting">Welcome back,</div>
+      <div class="hero-name" id="hero-name">Student</div>
+      <div class="hero-level" id="hero-level">⭐ Level 1 — Beginner</div>
+      <div class="countdown-row">
+        <div class="countdown-item"><div class="countdown-num" id="cd-days">—</div><div class="countdown-label">Days</div></div>
+        <div class="countdown-item"><div class="countdown-num" id="cd-hrs">—</div><div class="countdown-label">Hours</div></div>
+        <div class="countdown-item"><div class="countdown-num" id="cd-mins">—</div><div class="countdown-label">Mins</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat"><div class="stat-val" id="s-streak" style="color:var(--orange)">0🔥</div><div class="stat-label">Streak</div></div>
+    <div class="stat"><div class="stat-val" id="s-xp" style="color:var(--gold)">0</div><div class="stat-label">XP Points</div></div>
+    <div class="stat"><div class="stat-val" id="s-done" style="color:var(--green)">0%</div><div class="stat-label">Complete</div></div>
+  </div>
+
+  <div class="section-hd" style="padding-top:16px;">
+    <div style="display:flex;align-items:center;gap:8px;">
+      <div class="h3">Your Level</div>
+    </div>
+  </div>
+  <div style="padding:0 14px;margin-bottom:4px;" id="level-display"></div>
+  <div class="xp-bar-wrap">
+    <div class="xp-row"><div class="xp-label">XP Progress</div><div class="xp-val" id="xp-text">0 / 100 XP</div></div>
+    <div class="pbar"><div class="pfill" id="xp-bar" style="width:0%;background:linear-gradient(90deg,var(--gold2),var(--gold))"></div></div>
+  </div>
+
+  <div class="section-hd"><div class="h3">🏅 Badges</div><div class="body" style="font-size:12px;cursor:pointer;" onclick="showBadges()">See all</div></div>
+  <div class="badges-row" id="badges-row"></div>
+
+  <div class="notif-banner" id="notif-banner" onclick="dismissNotif()">
+    <div class="notif-icon">💡</div>
+    <div class="notif-text" id="notif-text"><b>Aaj ka reminder:</b> Library session 9:30 PM pe shuru karo!</div>
+  </div>
+
+  <div class="section-hd"><div class="h3">📅 Aaj ka Schedule</div><div class="badge bgold" id="today-phase-badge">Phase 1</div></div>
+  <div class="card" style="padding:0;overflow:hidden;">
+    <div class="task-item" id="t0"><div class="task-dot" style="background:var(--gold)"></div><div class="task-info"><div class="task-time">7:30 – 8:30 AM</div><div class="task-name" id="task-morning">Theory reading</div></div><div class="task-check" id="tc0" onclick="checkTask(0)"></div></div>
+    <div class="task-item" id="t1"><div class="task-dot" style="background:var(--blue)"></div><div class="task-info"><div class="task-time">Travel (45 min)</div><div class="task-name">Audio/MCQ revision</div></div><div class="task-check" id="tc1" onclick="checkTask(1)"></div></div>
+    <div class="task-item" id="t2"><div class="task-dot" style="background:var(--green)"></div><div class="task-info"><div class="task-time">Lunch (30 min)</div><div class="task-name">Quick revision</div></div><div class="task-check" id="tc2" onclick="checkTask(2)"></div></div>
+    <div class="task-item" id="t3"><div class="task-dot" style="background:var(--purple)"></div><div class="task-info"><div class="task-time" id="eve-time">9:30 PM – 1:00 AM</div><div class="task-name" id="task-evening">Library: Main session</div></div><div class="task-check" id="tc3" onclick="checkTask(3)"></div></div>
+  </div>
+
+  <div class="section-hd"><div class="h3">⚡ Quick Actions</div></div>
+  <div class="tools-grid">
+    <div class="tool-card" onclick="goMock()"><div class="tool-icon">📝</div><div class="tool-name">Mock Test</div><div class="tool-sub">Timed + scored</div></div>
+    <div class="tool-card" onclick="goHandwriting()"><div class="tool-icon">✍️</div><div class="tool-name">Write Practice</div><div class="tool-sub">Copy pe likhna</div></div>
+    <div class="tool-card" onclick="switchPage('chat');quickAsk('Aaj ka topic kya padhunga? Mera current phase aur schedule dekh ke batao.')"><div class="tool-icon">🤖</div><div class="tool-name">Ask AI Tutor</div><div class="tool-sub">Hinglish mein</div></div>
+    <div class="tool-card" onclick="showLeaderboard()"><div class="tool-icon">🏆</div><div class="tool-name">Leaderboard</div><div class="tool-sub">Top students</div></div>
+  </div>
+</div>
+
+<!-- SUBJECTS PAGE -->
+<div id="page-subjects" class="page screen">
+  <div style="padding:20px 14px 12px;display:flex;justify-content:space-between;align-items:flex-end;">
+    <div><div class="h2">Subjects</div><div class="body" style="margin-top:4px;" id="subj-sub">Jan 2027 · New Scheme</div></div>
+    <div class="badge bgold" id="subj-level-badge">CA Inter</div>
+  </div>
+  <div id="subjects-list"></div>
+  <div class="section-hd"><div class="h3">📊 Exam Pattern</div></div>
+  <div class="card">
+    <div style="display:flex;flex-direction:column;gap:10px;" id="exam-pattern"></div>
+  </div>
+  <div style="padding:0 14px;margin-bottom:16px;">
+    <a href="https://boslive.icai.org" target="_blank" style="text-decoration:none;">
+      <button class="btn btn-ghost">📥 ICAI BOS Portal — Download Material</button>
+    </a>
+  </div>
+</div>
+
+<!-- PLAN PAGE -->
+<div id="page-plan" class="page screen">
+  <div style="padding:20px 14px 10px;display:flex;align-items:center;justify-content:space-between;">
+    <div><div class="h2">Study Plan</div><div class="body" id="plan-sub" style="margin-top:4px;">Aapka personalized roadmap</div></div>
+    <div class="badge bgold" id="plan-phase-badge">Phase 1</div>
+  </div>
+
+  <!-- PLAN TABS -->
+  <div style="display:flex;gap:8px;padding:0 14px;margin-bottom:14px;overflow-x:auto;">
+    <button class="btn btn-gold btn-sm" id="ptab-week" onclick="showPlanTab('week')" style="flex-shrink:0;">📅 Weekly</button>
+    <button class="btn btn-ghost btn-sm" id="ptab-phase" onclick="showPlanTab('phase')" style="flex-shrink:0;">🗓️ Phases</button>
+    <button class="btn btn-ghost btn-sm" id="ptab-time" onclick="showPlanTab('time')" style="flex-shrink:0;">⏱️ Schedule</button>
+    <button class="btn btn-ghost btn-sm" id="ptab-material" onclick="showPlanTab('material')" style="flex-shrink:0;">📥 Material</button>
+  </div>
+
+  <!-- WEEKLY VIEW -->
+  <div id="plan-tab-week">
+    <div class="section-hd"><div class="h3">📅 This Week</div><div style="font-size:12px;color:var(--text3);" id="week-label"></div></div>
+    <div id="week-grid" style="display:flex;flex-direction:column;gap:8px;padding:0 14px;margin-bottom:12px;"></div>
+    <div style="padding:0 14px;margin-bottom:12px;">
+      <button class="btn btn-ghost" onclick="openSkipModal()">⚠️ Aaj Skip Karna Hai? Reschedule Karo</button>
+    </div>
+    <div style="padding:0 14px;margin-bottom:16px;">
+      <button class="btn btn-gold" onclick="switchPage('chat');quickAsk('Mera aaj ka detailed hour-by-hour study plan batao — topic, time allocation, aur breaks ke saath.')">🤖 AI se Aaj ka Plan Maango</button>
+    </div>
+  </div>
+
+  <!-- PHASE VIEW -->
+  <div id="plan-tab-phase" style="display:none;">
+    <div id="phases-list"></div>
+    <div style="padding:0 14px;margin-bottom:16px;">
+      <button class="btn btn-gold" onclick="switchPage('chat');quickAsk('Current phase mein main kahan hun? Aage ka plan aur weak areas batao.')">📋 Current Phase Analysis</button>
+    </div>
+  </div>
+
+  <!-- SCHEDULE VIEW -->
+  <div id="plan-tab-time" style="display:none;">
+    <div class="section-hd"><div class="h3">⏱️ Daily Time Slots</div></div>
+    <div id="schedule-blocks" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 14px;margin-bottom:12px;"></div>
+    <div class="card" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+      <div class="body">Total daily study</div>
+      <div style="font-family:var(--fh);font-size:22px;font-weight:700;color:var(--gold)" id="total-time">—</div>
+    </div>
+    <div class="card" style="margin-bottom:12px;">
+      <div style="font-size:13px;font-weight:600;margin-bottom:10px;color:var(--text);">Library Schedule</div>
+      <div style="font-size:13px;color:var(--text2);line-height:1.8;">
+        🌙 <b style="color:var(--text)">9:30 PM</b> — Library pahuncho<br>
+        📖 <b style="color:var(--text)">9:30–11:00</b> — Naya topic (theory + concept)<br>
+        ✍️ <b style="color:var(--text)">11:00–12:00</b> — Practice problems + answer writing<br>
+        📝 <b style="color:var(--text)">12:00–1:00</b> — MCQ + revision + next day prep<br>
+        😴 <b style="color:var(--text)">1:00 AM</b> — So jao (library mein hi!)
+      </div>
+    </div>
+  </div>
+
+  <!-- STUDY MATERIAL GUIDE -->
+  <div id="plan-tab-material" style="display:none;">
+    <div class="section-hd"><div class="h3">📥 Study Material Kaise Upload Karein</div></div>
+    <div class="card" style="margin-bottom:10px;border-color:rgba(245,200,66,0.3);">
+      <div style="font-size:13px;font-weight:600;color:var(--gold);margin-bottom:8px;">⚡ Sabse Pehle Yeh Samjho</div>
+      <div style="font-size:13px;color:var(--text2);line-height:1.7;">
+        Yeh app <b style="color:var(--text)">plan + tracker + gamification</b> ke liye hai.<br><br>
+        PDF analysis ke liye <b style="color:var(--text)">Claude.ai</b> use karo — wahan upload karo aur AI poora PDF padh ke guide karega.
+      </div>
+    </div>
+
+    <div style="padding:0 14px;margin-bottom:8px;font-size:11px;color:var(--text3);text-transform:uppercase;font-weight:600;letter-spacing:0.05em;">STEP-BY-STEP GUIDE</div>
+
+    <div style="padding:0 14px;display:flex;flex-direction:column;gap:8px;margin-bottom:14px;">
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:14px;display:flex;gap:12px;">
+        <div style="width:28px;height:28px;border-radius:50%;background:var(--bluebg);color:var(--blue);display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-size:13px;font-weight:700;flex-shrink:0;">1</div>
+        <div>
+          <div style="font-size:13px;font-weight:600;margin-bottom:4px;">ICAI Portal se Download Karo</div>
+          <div style="font-size:12px;color:var(--text2);line-height:1.5;">boslive.icai.org pe jao → Study Material → Intermediate → "May 2026 Onwards" wala download karo</div>
+          <a href="https://boslive.icai.org/study_material_new_paper_details.php?c=intermediate&language=English&year=Applicable+for+May+2026+Examination+Onwards" target="_blank">
+            <div style="margin-top:8px;padding:7px 12px;background:var(--bluebg);border-radius:var(--rs);font-size:12px;color:var(--blue);font-weight:600;display:inline-block;">🔗 ICAI Portal Kholo →</div>
+          </a>
+        </div>
+      </div>
+
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:14px;display:flex;gap:12px;">
+        <div style="width:28px;height:28px;border-radius:50%;background:var(--goldbg);color:var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-size:13px;font-weight:700;flex-shrink:0;">2</div>
+        <div>
+          <div style="font-size:13px;font-weight:600;margin-bottom:4px;">Claude.ai Pe Jao</div>
+          <div style="font-size:12px;color:var(--text2);line-height:1.5;">claude.ai kholo → New Chat → Paperclip icon se PDF attach karo</div>
+          <a href="https://claude.ai" target="_blank">
+            <div style="margin-top:8px;padding:7px 12px;background:var(--goldbg);border-radius:var(--rs);font-size:12px;color:var(--gold);font-weight:600;display:inline-block;">🤖 Claude.ai Kholo →</div>
+          </a>
+        </div>
+      </div>
+
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:14px;display:flex;gap:12px;">
+        <div style="width:28px;height:28px;border-radius:50%;background:var(--greenbg);color:var(--green);display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-size:13px;font-weight:700;flex-shrink:0;">3</div>
+        <div>
+          <div style="font-size:13px;font-weight:600;margin-bottom:4px;">Yeh Prompt Copy Karo</div>
+          <div style="font-size:12px;color:var(--text2);line-height:1.5;margin-bottom:8px;">PDF attach karne ke baad yeh likho:</div>
+          <div style="background:var(--bg3);border-radius:var(--rs);padding:10px 12px;font-size:12px;color:var(--text);font-family:monospace;line-height:1.6;border-left:3px solid var(--green);" id="upload-prompt-box">Is PDF ka chapter-wise analysis karo. High weightage topics pehle batao. Mera study plan banao aur pehle chapter se padhana shuru karo — concept, memory trick, aur ICAI format answer ke saath.</div>
+          <button onclick="copyPrompt()" style="margin-top:8px;padding:7px 12px;background:var(--greenbg);border-radius:var(--rs);font-size:12px;color:var(--green);font-weight:600;border:none;cursor:pointer;font-family:var(--fb);">📋 Prompt Copy Karo</button>
+        </div>
+      </div>
+
+      <div style="background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:14px;display:flex;gap:12px;">
+        <div style="width:28px;height:28px;border-radius:50%;background:var(--purplebg);color:var(--purple);display:flex;align-items:center;justify-content:center;font-family:var(--fh);font-size:13px;font-weight:700;flex-shrink:0;">4</div>
+        <div>
+          <div style="font-size:13px;font-weight:600;margin-bottom:4px;">Wapas Aao App Pe</div>
+          <div style="font-size:12px;color:var(--text2);line-height:1.5;">Claude.ai se jo topics mile unhe Subjects tab mein manually mark karte raho. Progress yahan track hoti rahegi.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="padding:0 14px;margin-bottom:8px;font-size:11px;color:var(--text3);text-transform:uppercase;font-weight:600;letter-spacing:0.05em;">JAN 2027 EXAM — DIRECT DOWNLOAD LINKS</div>
+    <div style="padding:0 14px;display:flex;flex-direction:column;gap:6px;margin-bottom:16px;">
+      <a href="https://boslive.icai.org/sm_module.php?module=144" target="_blank" style="text-decoration:none;"><div style="background:var(--card);border:1px solid var(--border);border-radius:var(--rs);padding:11px 14px;display:flex;align-items:center;gap:10px;"><span style="font-size:18px;">📊</span><div style="flex:1;"><div style="font-size:13px;font-weight:500;">Paper 1: Advanced Accounting</div><div style="font-size:11px;color:var(--text3);">May 2026 onwards · Jan 2027 applicable</div></div><span style="color:var(--blue);font-size:16px;">↗</span></div></a>
+      <a href="https://boslive.icai.org/sm_module.php?module=145" target="_blank" style="text-decoration:none;"><div style="background:var(--card);border:1px solid var(--border);border-radius:var(--rs);padding:11px 14px;display:flex;align-items:center;gap:10px;"><span style="font-size:18px;">⚖️</span><div style="flex:1;"><div style="font-size:13px;font-weight:500;">Paper 2: Corporate & Other Laws</div><div style="font-size:11px;color:var(--text3);">May 2026 onwards</div></div><span style="color:var(--blue);font-size:16px;">↗</span></div></a>
+      <a href="https://boslive.icai.org/sm_module.php?module=137" target="_blank" style="text-decoration:none;"><div style="background:var(--card);border:1px solid var(--border);border-radius:var(--rs);padding:11px 14px;display:flex;align-items:center;gap:10px;"><span style="font-size:18px;">🧾</span><div style="flex:1;"><div style="font-size:13px;font-weight:500;">Paper 3A: Income Tax</div><div style="font-size:11px;color:var(--text3);">Jan 2027 applicable</div></div><span style="color:var(--blue);font-size:16px;">↗</span></div></a>
+      <a href="https://boslive.icai.org/sm_module.php?module=136" target="_blank" style="text-decoration:none;"><div style="background:var(--card);border:1px solid var(--border);border-radius:var(--rs);padding:11px 14px;display:flex;align-items:center;gap:10px;"><span style="font-size:18px;">📋</span><div style="flex:1;"><div style="font-size:13px;font-weight:500;">Paper 3B: GST</div><div style="font-size:11px;color:var(--text3);">Jan 2027 applicable</div></div><span style="color:var(--blue);font-size:16px;">↗</span></div></a>
+      <a href="https://boslive.icai.org/sm_module.php?module=146" target="_blank" style="text-decoration:none;"><div style="background:var(--card);border:1px solid var(--border);border-radius:var(--rs);padding:11px 14px;display:flex;align-items:center;gap:10px;"><span style="font-size:18px;">🏭</span><div style="flex:1;"><div style="font-size:13px;font-weight:500;">Paper 4: Cost & Management Accounting</div><div style="font-size:11px;color:var(--text3);">May 2026 onwards</div></div><span style="color:var(--blue);font-size:16px;">↗</span></div></a>
+      <a href="https://boslive.icai.org/sm_module.php?module=147" target="_blank" style="text-decoration:none;"><div style="background:var(--card);border:1px solid var(--border);border-radius:var(--rs);padding:11px 14px;display:flex;align-items:center;gap:10px;"><span style="font-size:18px;">🔍</span><div style="flex:1;"><div style="font-size:13px;font-weight:500;">Paper 5: Auditing & Ethics</div><div style="font-size:11px;color:var(--text3);">May 2026 onwards</div></div><span style="color:var(--blue);font-size:16px;">↗</span></div></a>
+      <a href="https://boslive.icai.org/sm_module.php?module=151" target="_blank" style="text-decoration:none;"><div style="background:var(--card);border:1px solid var(--border);border-radius:var(--rs);padding:11px 14px;display:flex;align-items:center;gap:10px;"><span style="font-size:18px;">💹</span><div style="flex:1;"><div style="font-size:13px;font-weight:500;">Paper 6A: Financial Management</div><div style="font-size:11px;color:var(--text3);">Download PDF</div></div><span style="color:var(--blue);font-size:16px;">↗</span></div></a>
+      <a href="https://boslive.icai.org/sm_module.php?module=156" target="_blank" style="text-decoration:none;"><div style="background:var(--card);border:1px solid var(--border);border-radius:var(--rs);padding:11px 14px;display:flex;align-items:center;gap:10px;"><span style="font-size:18px;">🎯</span><div style="flex:1;"><div style="font-size:13px;font-weight:500;">Paper 6B: Strategic Management</div><div style="font-size:11px;color:var(--text3);">May 2026 onwards</div></div><span style="color:var(--blue);font-size:16px;">↗</span></div></a>
+    </div>
+
+    <div style="padding:0 14px;margin-bottom:8px;font-size:11px;color:var(--text3);text-transform:uppercase;font-weight:600;letter-spacing:0.05em;">RTP, MTP, PAST PAPERS</div>
+    <div style="padding:0 14px;display:flex;flex-direction:column;gap:6px;margin-bottom:20px;">
+      <a href="https://boslive.icai.org/education_content.php?p=Revision%20Test%20Papers" target="_blank" style="text-decoration:none;"><div style="background:var(--card);border:1px solid var(--border);border-radius:var(--rs);padding:11px 14px;display:flex;align-items:center;gap:10px;"><span style="font-size:18px;">📑</span><div style="flex:1;"><div style="font-size:13px;font-weight:500;">RTP — Revision Test Papers</div><div style="font-size:11px;color:var(--text3);">Exam se 2 mahine pehle release hota hai — high priority!</div></div><span style="color:var(--gold);font-size:16px;">↗</span></div></a>
+      <a href="https://boslive.icai.org/education_content.php?p=Mock%20Test%20Papers" target="_blank" style="text-decoration:none;"><div style="background:var(--card);border:1px solid var(--border);border-radius:var(--rs);padding:11px 14px;display:flex;align-items:center;gap:10px;"><span style="font-size:18px;">📝</span><div style="flex:1;"><div style="font-size:13px;font-weight:500;">MTP — Mock Test Papers</div><div style="font-size:11px;color:var(--text3);">Official mock tests with suggested answers</div></div><span style="color:var(--gold);font-size:16px;">↗</span></div></a>
+      <a href="https://boslive.icai.org/education_content.php?p=Question%20Papers" target="_blank" style="text-decoration:none;"><div style="background:var(--card);border:1px solid var(--border);border-radius:var(--rs);padding:11px 14px;display:flex;align-items:center;gap:10px;"><span style="font-size:18px;">📚</span><div style="flex:1;"><div style="font-size:13px;font-weight:500;">Past Question Papers</div><div style="font-size:11px;color:var(--text3);">Last 5 attempts — pattern samjhne ke liye</div></div><span style="color:var(--gold);font-size:16px;">↗</span></div></a>
+    </div>
+  </div>
+</div>
+
+<!-- AI CHAT PAGE -->
+<div id="page-chat" class="page">
+  <div class="chat-wrap">
+    <div class="chat-header">
+      <div class="chat-avatar">🤖</div>
+      <div style="flex:1;"><div class="chat-title">AI Tutor</div><div class="chat-status">● Online — Hinglish mein poochho</div></div>
+      <div class="badge bb" style="cursor:pointer;" onclick="clearChat()">Clear</div>
+    </div>
+    <div class="chips-wrap" id="chips-wrap"></div>
+    <div class="msgs" id="msgs"></div>
+    <div class="input-area">
+      <div class="input-row">
+        <textarea class="chat-in" id="chat-in" rows="1" placeholder="Koi bhi topic ya sawaal..." onkeydown="handleKey(event)" oninput="autoResize(this)"></textarea>
+        <button class="send-btn" onclick="sendMsg()"><svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MOCK TEST PAGE -->
+<div id="page-mock" class="page screen">
+  <div style="padding:20px 14px 12px;display:flex;justify-content:space-between;align-items:center;">
+    <div class="h2">Mock Test</div>
+    <button class="btn btn-ghost btn-sm" onclick="startMockSetup()">New Test</button>
+  </div>
+  <div id="mock-content">
+    <div style="padding:0 14px;">
+      <div class="notif-banner" style="margin:0 0 12px;cursor:default;">
+        <div class="notif-icon">⚠️</div>
+        <div class="notif-text"><b>Real exam jaise practice karo!</b> MCQ mein negative marking (-25%) hoti hai. Copy pe likhkar answer karo.</div>
+      </div>
+    </div>
+    <div class="tools-grid">
+      <div class="tool-card" onclick="startMock('quick','adv_acc')"><div class="tool-icon">⚡</div><div class="tool-name">Quick (15 min)</div><div class="tool-sub">5 MCQ + 1 Descriptive</div></div>
+      <div class="tool-card" onclick="startMock('half','adv_acc')"><div class="tool-icon">📝</div><div class="tool-name">Half Paper (90 min)</div><div class="tool-sub">15 MCQ + 3 Descriptive</div></div>
+      <div class="tool-card" onclick="startMock('full','adv_acc')"><div class="tool-icon">🏆</div><div class="tool-name">Full Paper (3 hrs)</div><div class="tool-sub">30 MCQ + 7 Descriptive</div></div>
+      <div class="tool-card" onclick="switchPage('chat');quickAsk('Mujhe Advanced Accounting ka handwriting practice question do — descriptive type. Batao kaise likhun topper jaisa answer ICAI format mein.')"><div class="tool-icon">✍️</div><div class="tool-name">Answer Check</div><div class="tool-sub">Photo bhejo AI check kare</div></div>
+    </div>
+    <div class="section-hd"><div class="h3">📈 Past Test Results</div></div>
+    <div id="past-results" style="padding:0 14px 16px;">
+      <div class="body" style="text-align:center;padding:20px 0;">Abhi koi test complete nahi hua</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- end main-app -->
+
+<!-- BOTTOM NAV -->
+<nav class="nav" id="main-nav" style="display:none;">
+  <button class="nb active" id="nb-home" onclick="switchPage('home')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    Home<div class="nb-dot"></div>
+  </button>
+  <button class="nb" id="nb-subjects" onclick="switchPage('subjects')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+    Subjects<div class="nb-dot"></div>
+  </button>
+  <button class="nb" id="nb-plan" onclick="switchPage('plan')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+    Plan<div class="nb-dot"></div>
+  </button>
+  <button class="nb" id="nb-chat" onclick="switchPage('chat')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+    AI Tutor<div class="nb-dot"></div>
+  </button>
+  <button class="nb" id="nb-mock" onclick="switchPage('mock')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    Tests<div class="nb-dot"></div>
+  </button>
+</nav>
+
+<!-- MODALS -->
+<div class="overlay" id="overlay-badges" onclick="closeOverlay('overlay-badges')">
+  <div class="sheet" onclick="e=>e.stopPropagation()">
+    <div class="sheet-handle"></div>
+    <div class="sheet-title">🏅 All Badges</div>
+    <div id="all-badges-content"></div>
+  </div>
+</div>
+<div class="overlay" id="overlay-subj" onclick="closeOverlay('overlay-subj')">
+  <div class="sheet" onclick="e=>e.stopPropagation()">
+    <div class="sheet-handle"></div>
+    <div class="sheet-title" id="subj-sheet-title"></div>
+    <div id="subj-sheet-body" class="body" style="margin-bottom:16px;"></div>
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <button class="btn btn-gold" id="subj-learn-btn">🤖 AI se Seekho</button>
+      <button class="btn btn-ghost" onclick="closeOverlay('overlay-subj')">Close</button>
+    </div>
+  </div>
+</div>
+<div class="overlay" id="overlay-lb" onclick="closeOverlay('overlay-lb')">
+  <div class="sheet" onclick="e=>e.stopPropagation()">
+    <div class="sheet-handle"></div>
+    <div class="sheet-title">🏆 Leaderboard</div>
+    <div class="body" style="margin-bottom:12px;">Top CA students by XP this week</div>
+    <div id="lb-list"></div>
+  </div>
+</div>
+<div class="overlay" id="overlay-hw" onclick="closeOverlay('overlay-hw')">
+  <div class="sheet" onclick="e=>e.stopPropagation()">
+    <div class="sheet-handle"></div>
+    <div class="sheet-title">✍️ Handwriting Practice</div>
+    <div class="hw-prompt"><div class="hw-prompt-text" id="hw-q-text"></div></div>
+    <div class="hw-steps">
+      <div class="hw-step"><div class="hw-step-num">1</div><div class="hw-step-text">Ek blank copy lo aur pen uthao — bilkul exam jaisa mahol banao.</div></div>
+      <div class="hw-step"><div class="hw-step-num">2</div><div class="hw-step-text">Timer lagao: <b style="color:var(--gold)" id="hw-timer-text">15 minutes</b>. Real exam speed pe likhne ki practice karo.</div></div>
+      <div class="hw-step"><div class="hw-step-num">3</div><div class="hw-step-text">Likhne ke baad — AI Tutor pe jao, "Answer check karo" bolo aur photo bhejo.</div></div>
+    </div>
+    <div style="display:flex;gap:8px;padding:0 0 8px;">
+      <button class="btn btn-gold" style="flex:1;" onclick="startHWTimer()">⏱️ Timer Shuru Karo</button>
+      <button class="btn btn-ghost btn-sm" onclick="switchPage('chat');closeOverlay('overlay-hw');quickAsk('Mujhe '+currentHwQ+' ka answer check karna hai. Main photo bhejunga — ICAI examiner ki tarah check karo aur marks batao.')">Check Answer ↗</button>
+    </div>
+  </div>
+</div>
+
+<!-- MCQ OVERLAY -->
+<div class="overlay" id="overlay-mcq" onclick="">
+  <div class="sheet" onclick="e=>e.stopPropagation()" style="padding-bottom:20px;">
+    <div class="sheet-handle"></div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+      <div class="sheet-title" style="margin-bottom:0;">MCQ Practice</div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <div class="badge bgold" id="mcq-timer-badge">⏱️ 1:30</div>
+        <div class="badge bb" id="mcq-q-badge">Q 1/5</div>
+      </div>
+    </div>
+    <div id="mcq-q-text" style="font-size:15px;font-weight:500;line-height:1.5;margin-bottom:16px;color:var(--text);"></div>
+    <div id="mcq-opts-wrap" style="display:flex;flex-direction:column;gap:8px;"></div>
+    <div id="mcq-exp-box" style="display:none;margin-top:12px;padding:14px;background:var(--bg3);border-radius:var(--rs);font-size:13px;color:var(--text2);line-height:1.6;border-left:3px solid var(--gold);"></div>
+    <div style="margin-top:14px;display:flex;gap:8px;">
+      <button class="btn btn-ghost" style="flex:1;" onclick="closeOverlay('overlay-mcq')">Baad mein</button>
+      <button class="btn btn-gold" style="flex:1;" onclick="nextMCQ()">Agla Sawaal →</button>
+    </div>
+  </div>
+</div>
+
+<!-- RESCHEDULE MODAL -->
+<div class="overlay" id="overlay-skip" onclick="">
+  <div class="sheet" onclick="event.stopPropagation()">
+    <div class="sheet-handle"></div>
+    <div class="sheet-title">⚠️ Aaj Skip — Reschedule Karo</div>
+    <div style="font-size:13px;color:var(--text2);margin-bottom:16px;line-height:1.6;">Koi baat nahi — life hoti hai. Reason batao aur plan adjust karo.</div>
+
+    <div style="font-size:12px;color:var(--text3);text-transform:uppercase;font-weight:600;margin-bottom:8px;">Kyun skip kar rahe ho?</div>
+    <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px;" id="skip-reasons">
+      <div class="ob-opt" id="sr-tired" onclick="selectSkipReason('tired')"><div class="ob-opt-icon">😴</div><div class="ob-opt-text"><div class="ob-opt-title">Thaka hua hun</div><div class="ob-opt-sub">Rest chahiye — kal double session karunga</div></div><div class="ob-check"></div></div>
+      <div class="ob-opt" id="sr-work" onclick="selectSkipReason('work')"><div class="ob-opt-icon">💼</div><div class="ob-opt-text"><div class="ob-opt-title">Office mein extra kaam tha</div><div class="ob-opt-sub">Job pressure — samajh aata hai</div></div><div class="ob-check"></div></div>
+      <div class="ob-opt" id="sr-personal" onclick="selectSkipReason('personal')"><div class="ob-opt-icon">👨‍👩‍👧</div><div class="ob-opt-text"><div class="ob-opt-title">Personal/family matter</div><div class="ob-opt-sub">Family first — kal pakka</div></div><div class="ob-check"></div></div>
+      <div class="ob-opt" id="sr-sick" onclick="selectSkipReason('sick')"><div class="ob-opt-icon">🤒</div><div class="ob-opt-text"><div class="ob-opt-title">Tabiyat theek nahi</div><div class="ob-opt-sub">Get well soon — health first!</div></div><div class="ob-check"></div></div>
+      <div class="ob-opt" id="sr-other" onclick="selectSkipReason('other')"><div class="ob-opt-icon">📝</div><div class="ob-opt-text"><div class="ob-opt-title">Kuch aur reason</div><div class="ob-opt-sub">Khud batao</div></div><div class="ob-check"></div></div>
+    </div>
+
+    <div style="font-size:12px;color:var(--text3);text-transform:uppercase;font-weight:600;margin-bottom:8px;">Reschedule Karo</div>
+    <div style="display:flex;gap:8px;margin-bottom:16px;">
+      <button class="btn btn-ghost" style="flex:1;" onclick="reschedule('tomorrow')">➡️ Kal pe shift</button>
+      <button class="btn btn-ghost" style="flex:1;" onclick="reschedule('weekend')">📅 Weekend pe</button>
+    </div>
+
+    <div style="background:var(--goldbg);border-radius:var(--rs);padding:12px;margin-bottom:16px;font-size:13px;color:var(--text2);line-height:1.5;">
+      💡 <b style="color:var(--gold)">Streak tip:</b> Aaj sirf 30 min bhi padh liya toh streak nahi tutega. Travel mein audio ya MCQ karo!
+    </div>
+
+    <div style="display:flex;gap:8px;">
+      <button class="btn btn-ghost" style="flex:1;" onclick="closeOverlay('overlay-skip')">Cancel</button>
+      <button class="btn btn-gold" style="flex:1;" onclick="confirmSkip()">Confirm Reschedule</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ============ DATA ============
+const SAVE_KEY = 'cacrak_v3';
+let S = {
+  onboarded: false, name: '', lang: 'hinglish', level: 'inter',
+  attempt: 'jan2027', group: 'both', job: 'working',
+  dailyHours: 3, bg: 'fresh',
+  xp: 0, streak: 0, lastStudy: null, mcqDone: 0,
+  tasks: {}, subjProgress: [0,0,0,0,0,0],
+  chatHistory: [], testResults: [],
+  badges: [], notifDismissed: false
+};
+
+function load() { try { const d=localStorage.getItem(SAVE_KEY); if(d) S={...S,...JSON.parse(d)}; } catch(e){} }
+function save() { try { localStorage.setItem(SAVE_KEY,JSON.stringify(S)); } catch(e){} }
+load();
+
+// ============ ONBOARDING STATE ============
+let obStep = 0;
+const OB_TOTAL = 7;
+let obLang='hinglish', obLevel='', obAttempt='jan2027', obGroup='', obJob='working', obBg='';
+
+function obNext() {
+  if(obStep===1) { const n=document.getElementById('ob-name').value.trim(); if(!n){toast('Naam to batao!');return;} S.name=n; S.lang=obLang; }
+  if(obStep===2 && !obLevel){toast('Level choose karo!');return;}
+  if(obStep===3 && !obGroup){toast('Group choose karo!');return;}
+  if(obStep===5 && !obBg){toast('Background batao!');return;}
+  if(obStep===6) { finishOnboarding(); return; }
+  if(obStep===4) { S.dailyHours=parseInt(document.getElementById('time-slider').value); S.job=obJob; }
+  if(obStep===5) { S.bg=obBg; buildReadyScreen(); }
+  if(obStep===3) { S.attempt=document.getElementById('ob-attempt').value; S.group=obGroup; }
+  if(obStep===2) { S.level=obLevel; }
+
+  document.getElementById('ob'+obStep).classList.remove('active');
+  obStep++;
+  document.getElementById('ob'+obStep).classList.add('active');
+  for(let i=0;i<OB_TOTAL;i++) document.getElementById('od'+i).classList.toggle('done',i<=obStep);
+}
+
+function selectLang(l){obLang=l;['hindi','english','hinglish'].forEach(x=>{const el=document.getElementById('lang-'+x);el.classList.toggle('selected',x===l);el.querySelector('.ob-check').textContent=x===l?'✓':''});}
+function selectLevel(l){obLevel=l;['foundation','inter','final'].forEach(x=>{const el=document.getElementById('lvl-'+x);el.classList.toggle('selected',x===l);el.querySelector('.ob-check').textContent=x===l?'✓':''});}
+function selectGroup(g){obGroup=g;['both','g1','g2'].forEach(x=>{const el=document.getElementById('grp-'+x);el.classList.toggle('selected',x===g);el.querySelector('.ob-check').textContent=x===g?'✓':''});}
+function selectJob(j){obJob=j;['working','student','articleship'].forEach(x=>{const el=document.getElementById('job-'+x);el.classList.toggle('selected',x===j);el.querySelector('.ob-check').textContent=x===j?'✓':''});}
+function selectBg(b){obBg=b;['fresh','some','work','repeat'].forEach(x=>{const el=document.getElementById('bg-'+x);el.classList.toggle('selected',x===b);el.querySelector('.ob-check').textContent=x===b?'✓':''});}
+
+function buildReadyScreen() {
+  const examDates = {jan2027:'January 2027',may2027:'May 2027',sep2027:'September 2027',jan2028:'January 2028'};
+  const levelNames = {foundation:'CA Foundation',inter:'CA Intermediate',final:'CA Final'};
+  const groupNames = {both:'Both Groups',g1:'Group 1 Only',g2:'Group 2 Only'};
+  document.getElementById('ob-ready-title').textContent = `${S.name}, taiyar ho! 🚀`;
+  document.getElementById('ob-ready-sub').textContent = 'Yeh raha aapka plan:';
+  const items = [
+    {icon:'🎯',label:'Level',val:levelNames[obLevel||'inter']},
+    {icon:'📅',label:'Target',val:examDates[document.getElementById('ob-attempt').value]},
+    {icon:'📚',label:'Group',val:groupNames[obGroup||'both']},
+    {icon:'⏰',label:'Daily Study',val:document.getElementById('time-slider').value+' hours'},
+    {icon:'💼',label:'Situation',val:obJob==='working'?'Working Professional':obJob==='student'?'Full-time Student':'Articleship'},
+  ];
+  document.getElementById('plan-preview').innerHTML = items.map(i=>`
+    <div style="background:var(--bg3);border-radius:var(--rs);padding:12px 14px;display:flex;align-items:center;gap:12px;">
+      <span style="font-size:20px;">${i.icon}</span>
+      <div><div style="font-size:11px;color:var(--text3);">${i.label}</div><div style="font-size:14px;font-weight:600;">${i.val}</div></div>
+    </div>`).join('');
+}
+
+function finishOnboarding() {
+  S.onboarded=true; save();
+  document.getElementById('onboarding').style.display='none';
+  document.getElementById('main-app').style.display='flex';
+  document.getElementById('main-app').style.flexDirection='column';
+  document.getElementById('main-app').style.height='100%';
+  document.getElementById('main-nav').style.display='flex';
+  initApp();
+  addMsg('ai', buildWelcomeMsg());
+}
+
+function buildWelcomeMsg() {
+  const greetings = {hindi:`Namaste ${S.name} ji! 🙏\n\nMain aapka CA ${S.level==='inter'?'Intermediate':S.level==='foundation'?'Foundation':'Final'} tutor hun.\n\nAapka ${S.group==='both'?'dono groups':'ek group'} ka plan ready hai. Rozana ${S.dailyHours} ghante ki padhai se hum target achieve karenge!\n\nShuru kahaan se karein? Koi bhi topic poochho — main Hindi mein samjhaunga, memory trick dunga, aur ICAI format mein answer likhna bhi sikhaunga. ✨`, hinglish:`Hey ${S.name}! 🎯\n\nMain hun aapka CA ${S.level==='inter'?'Inter':S.level==='foundation'?'Foundation':'Final'} AI Tutor!\n\nAapka ${S.dailyHours} ghante daily plan set ho gaya. ${S.group==='both'?'Both groups':'Ek group'} ka poora syllabus cover karenge step by step.\n\nKya padhna hai aaj? Koi bhi topic poochho — Hinglish mein samjhaunga, tricks dunga, ICAI format sikhaunga! 🚀`, english:`Hello ${S.name}! 🎯\n\nI'm your CA ${S.level==='inter'?'Intermediate':S.level==='foundation'?'Foundation':'Final'} AI Tutor!\n\nYour ${S.dailyHours}-hour daily study plan is ready. We'll cover ${S.group==='both'?'both groups':'one group'} systematically.\n\nWhat would you like to study today? Ask me anything — I'll explain clearly with memory tricks and ICAI answer format! 🚀`};
+  return greetings[S.lang]||greetings.hinglish;
+}
+
+// ============ MAIN APP INIT ============
+function initApp() {
+  renderHero(); renderStats(); renderBadges(); renderSubjects(); renderPlan(); renderChips();
+  updateCountdown(); setInterval(updateCountdown, 30000);
+  renderTasks(); renderExamPattern(); renderScheduleBlocks();
+  if(S.onboarded && S.chatHistory.length===0) addMsg('ai',buildWelcomeMsg());
+  else S.chatHistory.forEach(m=>renderMsg(m.role,m.content,false));
+  grantBadges();
+}
+
+// ============ HERO ============
+const heroColors = {inter:['#1a2a4a','#1e1535'],foundation:['#1a3a2a','#152515'],final:['#3a1a1a','#251515']};
+function renderHero() {
+  const colors = heroColors[S.level]||heroColors.inter;
+  const h = document.getElementById('hero-card');
+  h.style.background = `linear-gradient(135deg, ${colors[0]} 0%, ${colors[1]} 100%)`;
+  document.getElementById('hero-name').textContent = S.name || 'Student';
+  const levels = getLevel();
+  document.getElementById('hero-level').textContent = `${levels.icon} Level ${levels.num} — ${levels.name}`;
+}
+
+const LEVELS = [
+  {num:1,name:'Beginner',icon:'🌱',xp:0,maxXp:100},
+  {num:2,name:'Learner',icon:'📖',xp:100,maxXp:250},
+  {num:3,name:'Student',icon:'✏️',xp:250,maxXp:500},
+  {num:4,name:'Scholar',icon:'🎓',xp:500,maxXp:1000},
+  {num:5,name:'Expert',icon:'⭐',xp:1000,maxXp:2000},
+  {num:6,name:'Master',icon:'🏆',xp:2000,maxXp:5000},
+  {num:7,name:'CA Champion',icon:'🥇',xp:5000,maxXp:9999}
+];
+function getLevel() { return LEVELS.filter(l=>S.xp>=l.xp).pop()||LEVELS[0]; }
+
+function renderStats() {
+  document.getElementById('s-streak').textContent = (S.streak||0)+'🔥';
+  document.getElementById('s-xp').textContent = S.xp||0;
+  const pct = Math.round(S.subjProgress.reduce((a,b)=>a+b,0)/S.subjProgress.length);
+  document.getElementById('s-done').textContent = pct+'%';
+  const lv = getLevel(); const nextLv = LEVELS[lv.num]||lv;
+  const prog = Math.min(100,Math.round(((S.xp-lv.xp)/(nextLv.xp-lv.xp))*100))||0;
+  document.getElementById('xp-bar').style.width = prog+'%';
+  document.getElementById('xp-text').textContent = `${S.xp} / ${nextLv.xp} XP`;
+  document.getElementById('level-display').innerHTML = `<div class="level-badge"><div class="level-icon" style="background:var(--goldbg)">${lv.icon}</div><div><div class="level-name">${lv.name}</div><div class="level-sub">Level ${lv.num} · ${nextLv.xp-S.xp} XP to next</div></div></div>`;
+}
+
+// ============ BADGES ============
+const ALL_BADGES = [
+  {id:'first_day',icon:'🌅',name:'Pehla Din',desc:'Pehli baar app kholi',xp:10,auto:true},
+  {id:'streak3',icon:'🔥',name:'3-Day Streak',desc:'3 din laga ke padha',xp:30,check:()=>S.streak>=3},
+  {id:'streak7',icon:'⚡',name:'Week Warrior',desc:'7 din bina ruke',xp:75,check:()=>S.streak>=7},
+  {id:'streak30',icon:'💎',name:'Month Master',desc:'30 din continuous',xp:300,check:()=>S.streak>=30},
+  {id:'mcq10',icon:'📝',name:'MCQ Starter',desc:'10 MCQ practice kiye',xp:20,check:()=>S.mcqDone>=10},
+  {id:'mcq50',icon:'🎯',name:'MCQ Hunter',desc:'50 MCQ complete',xp:100,check:()=>S.mcqDone>=50},
+  {id:'mcq100',icon:'🏹',name:'MCQ Master',desc:'100 MCQ done!',xp:250,check:()=>S.mcqDone>=100},
+  {id:'first_mock',icon:'📊',name:'Test Taker',desc:'Pehla mock test diya',xp:50,check:()=>S.testResults.length>=1},
+  {id:'mock5',icon:'🏆',name:'Mock Champion',desc:'5 mock tests complete',xp:150,check:()=>S.testResults.length>=5},
+  {id:'xp500',icon:'⭐',name:'XP Collector',desc:'500 XP earn kiye',xp:50,check:()=>S.xp>=500},
+  {id:'write1',icon:'✍️',name:'Kalamkaar',desc:'Pehli handwriting practice',xp:25,check:()=>S.hwDone>=1},
+  {id:'allsubj',icon:'📚',name:'All-Rounder',desc:'Sab subjects start kiye',xp:100,check:()=>S.subjProgress.every(p=>p>0)},
+];
+function grantBadges() {
+  let changed=false;
+  ALL_BADGES.forEach(b=>{
+    if(!S.badges.includes(b.id)){
+      if(b.auto||(b.check&&b.check())){S.badges.push(b.id);S.xp+=b.xp;changed=true;toast(`🏅 Badge mila: ${b.name}! +${b.xp} XP`);}
+    }
+  });
+  if(changed){save();renderStats();renderBadges();}
+}
+function addXP(pts) { S.xp+=pts; save(); renderStats(); grantBadges(); }
+function renderBadges() {
+  const row = document.getElementById('badges-row');
+  const showing = ALL_BADGES.slice(0,6);
+  row.innerHTML = showing.map(b=>`<div class="badge-icon ${S.badges.includes(b.id)?'earned':'locked'}" title="${b.name}: ${b.desc}" onclick="toast('${b.name}: ${b.desc}')">${b.icon}</div>`).join('');
+}
+function showBadges() {
+  document.getElementById('all-badges-content').innerHTML = `<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px;">${ALL_BADGES.map(b=>`<div style="text-align:center;cursor:pointer;" onclick="toast('${b.name}')"><div class="badge-icon ${S.badges.includes(b.id)?'earned':'locked'}" style="margin:0 auto 4px;">${b.icon}</div><div style="font-size:10px;color:var(--text3)">${b.name}</div></div>`).join('')}</div>`;
+  openOverlay('overlay-badges');
+}
+
+// ============ COUNTDOWN ============
+function updateCountdown() {
+  const targets={jan2027:new Date('2027-01-01'),may2027:new Date('2027-05-01'),sep2027:new Date('2027-09-01'),jan2028:new Date('2028-01-01')};
+  const target = targets[S.attempt]||targets.jan2027;
+  const now=new Date(); const diff=target-now;
+  const days=Math.floor(diff/86400000); const hrs=Math.floor((diff%86400000)/3600000); const mins=Math.floor((diff%3600000)/60000);
+  document.getElementById('cd-days').textContent=Math.max(0,days);
+  document.getElementById('cd-hrs').textContent=Math.max(0,hrs);
+  document.getElementById('cd-mins').textContent=Math.max(0,mins);
+}
+
+// ============ TASKS ============
+function renderTasks() {
+  const today=new Date().toDateString();
+  const p=getCurrentPhase();
+  document.getElementById('task-morning').textContent=p.morning;
+  document.getElementById('task-evening').textContent=p.evening;
+  document.getElementById('today-phase-badge').textContent='Phase '+p.num;
+  if(S.job==='working'){document.getElementById('eve-time').textContent='9:30 PM – 1:00 AM';}
+  else{document.getElementById('eve-time').textContent='7:00 – 10:00 PM';}
+  [0,1,2,3].forEach(i=>{const k=today+'_t'+i;if(S.tasks[k]){const el=document.getElementById('tc'+i);el.classList.add('done');el.textContent='✓';}});
+}
+function checkTask(i) {
+  const today=new Date().toDateString(); const k=today+'_t'+i;
+  const el=document.getElementById('tc'+i);
+  if(S.tasks[k]){delete S.tasks[k];el.classList.remove('done');el.textContent='';}
+  else{S.tasks[k]=true;el.classList.add('done');el.textContent='✓';addXP(10);
+    if(i===3){S.streak=(S.streak||0)+1;S.lastStudy=today;save();toast('🔥 Library complete! +10 XP · Streak: '+S.streak+' days');renderStats();grantBadges();}
+    else toast('✅ Done! +10 XP');}
+  save();
+}
+
+// ============ SUBJECTS DATA ============
+const SUBJECTS_DATA = {
+  inter: [
+    {name:'Advanced Accounting',icon:'📊',color:'var(--blue)',badge:'Strength',badgeCls:'bb',
+     meta:'Paper 1 · Group 1 · 100 Marks',
+     body:`<b>High Weightage Topics:</b><br>• Accounting Standards — 20-25 marks<br>• Partnership Accounts — 15-20 marks<br>• Company Accounts — 15-20 marks<br>• Amalgamation — 10-15 marks<br>• Branch Accounts — 8-10 marks<br><br><b>Advantage:</b> Working accountant ho — practical base strong hai.<br><br><b>ICAI Format:</b> Definition + Applicability + Journal Entry + Example — teeno likhna zaroori.`,
+     ask:'Advanced Accounting Paper 1 ka high weightage topic-wise breakdown batao. Main working accountant hun toh kya advantage hai aur kahan se shuru karun?'},
+    {name:'Corporate & Other Laws',icon:'⚖️',color:'var(--orange)',badge:'Focus',badgeCls:'borange',
+     meta:'Paper 2 · Group 1 · 100 Marks',
+     body:`<b>High Weightage:</b><br>• Companies Act 2013 — 65-70% paper<br>• Share Capital & Debentures — 15 marks<br>• Board & Meetings — 15 marks<br>• LLP Act — 10 marks<br>• FEMA — 8 marks<br><br><b>Memory Trick:</b> Section numbers yaad karo — examiner impress hota hai.<br><br><b>Challenge:</b> Pure theory — memory + presentation.`,
+     ask:'Corporate & Other Laws ka most important Companies Act 2013 sections batao. Memory tricks do section numbers yaad karne ke liye.'},
+    {name:'Taxation',icon:'🧾',color:'var(--green)',badge:'Strength',badgeCls:'bg',
+     meta:'Paper 3 · Group 1 · 100 Marks (IT 50 + GST 50)',
+     body:`<b>Income Tax (50 marks):</b><br>• Heads of Income — 20 marks<br>• TDS/TCS — 10 marks<br>• Deductions (80C etc) — 8 marks<br><br><b>GST (50 marks):</b><br>• Supply, Time/Place — 15 marks<br>• Input Tax Credit — 12 marks<br>• Returns & Registration — 12 marks<br><br><b>Advantage:</b> Accountant hone se practical exposure hai!`,
+     ask:'Taxation Paper 3 mein Income Tax aur GST ka weightage batao. Working accountant hun toh kya already pata hoga aur kya naya sikhna padega CA Inter level pe?'},
+    {name:'Cost & Management Accounting',icon:'🏭',color:'var(--gold)',badge:'Moderate',badgeCls:'bgold',
+     meta:'Paper 4 · Group 1 · 100 Marks',
+     body:`<b>High Weightage:</b><br>• Standard Costing & Variance — 25 marks<br>• Marginal Costing — 20 marks<br>• Budget & Control — 15 marks<br>• Process Costing — 10 marks<br><br><b>Approach:</b> Practice = success. Har concept ke baad numericals solve karo.<br><br><b>Tip:</b> Variance analysis formulas ek page pe likhke rakh.`,
+     ask:'Cost & Management Accounting ka approach batao. Numericals practice strategy kya honi chahiye? Variance analysis samjhao.'},
+    {name:'Auditing & Ethics',icon:'🔍',color:'var(--purple)',badge:'Focus',badgeCls:'bpurple',
+     meta:'Paper 5 · Group 2 · 100 Marks',
+     body:`<b>High Weightage:</b><br>• SA 200-265 — 25 marks<br>• SA 300-499 — 15 marks<br>• Company Audit — 15 marks<br>• Ethics — 10 marks<br><br><b>SA Number Trick:</b><br>200 series = Basics/Objectives<br>300 series = Planning<br>400 series = Internal Control<br>500 series = Audit Evidence<br><br><b>Key:</b> ICAI language mein likhna zaroori hai.`,
+     ask:'Auditing SA numbers yaad karne ka systematic method batao. SA 200 se 700 tak ek memory framework do. Examiner kaise check karta hai?'},
+    {name:'FM & Strategic Management',icon:'💹',color:'var(--red)',badge:'Moderate',badgeCls:'bred',
+     meta:'Paper 6 · Group 2 · 100 Marks (FM 50 + SM 50)',
+     body:`<b>FM (50 marks):</b><br>• Capital Structure — 12 marks<br>• Cost of Capital — 12 marks<br>• Working Capital — 10 marks<br>• Capital Budgeting — 10 marks<br><br><b>SM (50 marks):</b><br>• SWOT, Porter's 5 Forces — 20 marks<br>• Strategy Types — 15 marks<br>• Case Analysis — 15 marks<br><br><b>FM = numericals. SM = structured theory.`,
+     ask:'FM aur SM Paper 6 ka approach batao. FM ke important formulas aur SM mein ICAI format mein kaise answer likhun?'},
+  ],
+  foundation: [
+    {name:'Principles of Accounting',icon:'📊',color:'var(--blue)',badge:'Core',badgeCls:'bb',meta:'Paper 1 · 100 Marks',body:'Basic accounting principles, journal entries, final accounts, depreciation, bank reconciliation.',ask:'CA Foundation Paper 1 Accounting ka most important topics batao aur kahan se shuru karun.'},
+    {name:'Business Laws',icon:'⚖️',color:'var(--orange)',badge:'Theory',badgeCls:'borange',meta:'Paper 2 · 60 Marks',body:'Indian Contract Act, Sale of Goods Act, Partnership Act basics.',ask:'CA Foundation Business Laws ke most important acts batao — memory tricks ke saath.'},
+    {name:'Business Correspondence',icon:'✉️',color:'var(--green)',badge:'Easy',badgeCls:'bg',meta:'Paper 2 · 40 Marks',body:'Business letters, emails, reports writing.',ask:'Foundation Business Correspondence mein kaise marks laau? Format batao.'},
+    {name:'Business Mathematics',icon:'🔢',color:'var(--gold)',badge:'Scoring',badgeCls:'bgold',meta:'Paper 3 · 40 Marks',body:'Ratio, proportion, logarithm, time value of money.',ask:'CA Foundation Maths ka shortcut approach batao — scoring kaise karun?'},
+    {name:'Business Economics',icon:'📈',color:'var(--purple)',badge:'Theory',badgeCls:'bpurple',meta:'Paper 4 · 60 Marks',body:'Micro economics, demand supply, market structures.',ask:'Foundation Economics — high weightage topics batao simple language mein.'},
+    {name:'Business & Commercial Knowledge',icon:'💡',color:'var(--red)',badge:'General',badgeCls:'bred',meta:'Paper 4 · 40 Marks',body:'Business organizations, markets, banking basics.',ask:'Foundation BCK — kya important hai? Kitna focus karun?'},
+  ],
+  final: [
+    {name:'Financial Reporting',icon:'📑',color:'var(--blue)',badge:'Core',badgeCls:'bb',meta:'Paper 1 · 100 Marks',body:'Ind AS, consolidated financial statements, advanced accounting standards.',ask:'CA Final Paper 1 Financial Reporting — Ind AS ka framework batao. Kahan se shuru karun?'},
+    {name:'Advanced FM & Economics',icon:'💹',color:'var(--gold)',badge:'Scoring',badgeCls:'bgold',meta:'Paper 2 · 100 Marks',body:'Advanced financial management, portfolio theory, derivatives, forex.',ask:'CA Final AFM ka approach batao — numericals heavy hai. Strategy kya honi chahiye?'},
+    {name:'Advanced Auditing',icon:'🔍',color:'var(--purple)',badge:'Theory',badgeCls:'bpurple',meta:'Paper 3 · 100 Marks',body:'Advanced SA, company audit, special audits, CARO.',ask:'CA Final Auditing — SA series aur special audits ke liye strategy batao.'},
+    {name:'Corporate & Economic Laws',icon:'⚖️',color:'var(--orange)',badge:'Heavy',badgeCls:'borange',meta:'Paper 4 · 100 Marks',body:'SEBI, IBC, Competition Act, FEMA advanced.',ask:'CA Final Corporate Laws — SEBI aur IBC ke important provisions batao.'},
+    {name:'Strategic Cost Management',icon:'🎯',color:'var(--green)',badge:'Application',badgeCls:'bg',meta:'Paper 5 · 100 Marks',body:'Advanced costing, strategic analysis, performance measurement.',ask:'CA Final SCM — strategic costing approach batao with high weightage areas.'},
+    {name:'Integrated Business Solutions',icon:'🔗',color:'var(--red)',badge:'Case Study',badgeCls:'bred',meta:'Paper 6 · 100 Marks',body:'Multi-disciplinary case studies integrating all subjects.',ask:'CA Final IBS case study approach kya hona chahiye? Kaise prepare karun?'},
+  ]
+};
+
+const EXAM_PATTERNS = {
+  inter:{items:[{l:'MCQ (Objective)',v:'30 marks',c:'var(--blue)'},{l:'Descriptive',v:'70 marks',c:'var(--gold)'},{l:'Negative Marking (MCQ)',v:'-25% per wrong',c:'var(--red)'},{l:'Pass Marks (each paper)',v:'40%',c:'var(--green)'},{l:'Group Aggregate',v:'50% minimum',c:'var(--purple)'}]},
+  foundation:{items:[{l:'MCQ Papers 3 & 4',v:'100% MCQ',c:'var(--blue)'},{l:'Descriptive Papers 1 & 2',v:'Subjective',c:'var(--gold)'},{l:'Negative Marking',v:'-0.25 per wrong MCQ',c:'var(--red)'},{l:'Pass',v:'50% aggregate',c:'var(--green)'}]},
+  final:{items:[{l:'MCQ',v:'30 marks',c:'var(--blue)'},{l:'Descriptive',v:'70 marks',c:'var(--gold)'},{l:'Negative Marking',v:'-25% per wrong',c:'var(--red)'},{l:'Pass',v:'40% each + 50% aggregate',c:'var(--green)'}]}
+};
+
+function renderSubjects() {
+  const subjs = SUBJECTS_DATA[S.level]||SUBJECTS_DATA.inter;
+  const level_labels={inter:'CA Inter · Jan 2027',foundation:'CA Foundation',final:'CA Final'};
+  document.getElementById('subj-sub').textContent=level_labels[S.level]||'';
+  document.getElementById('subj-level-badge').textContent=S.level==='inter'?'CA Inter':S.level==='foundation'?'Foundation':'CA Final';
+  document.getElementById('subjects-list').innerHTML = subjs.map((s,i)=>`
+    <div class="subj-item" onclick="openSubj(${i})">
+      <div class="subj-top">
+        <div class="subj-icon" style="background:${s.color}22">${s.icon}</div>
+        <div class="subj-info"><div class="subj-name">${s.name}</div><div class="subj-meta">${s.meta}</div></div>
+        <span class="badge ${s.badgeCls}">${s.badge}</span>
+      </div>
+      <div class="subj-bottom">
+        <div class="pbar" style="flex:1;"><div class="pfill" id="sp${i}" style="width:${S.subjProgress[i]||0}%;background:${s.color}"></div></div>
+        <div class="subj-pct">${S.subjProgress[i]||0}%</div>
+      </div>
+    </div>`).join('');
+  const pat=EXAM_PATTERNS[S.level]||EXAM_PATTERNS.inter;
+  document.getElementById('exam-pattern').innerHTML=pat.items.map(p=>`<div style="display:flex;justify-content:space-between;align-items:center;"><span class="body">${p.l}</span><span style="font-family:var(--fh);font-size:13px;font-weight:600;color:${p.c}">${p.v}</span></div>`).join('');
+}
+
+function openSubj(i) {
+  const subjs=SUBJECTS_DATA[S.level]||SUBJECTS_DATA.inter;
+  const s=subjs[i];
+  document.getElementById('subj-sheet-title').textContent=s.icon+' '+s.name;
+  document.getElementById('subj-sheet-body').innerHTML=s.body;
+  document.getElementById('subj-learn-btn').onclick=()=>{closeOverlay('overlay-subj');switchPage('chat');quickAsk(s.ask);S.subjProgress[i]=Math.max(S.subjProgress[i]||0,5);save();};
+  openOverlay('overlay-subj');
+}
+
+// ============ PLAN ============
+const PHASES = {
+  inter_both: [
+    {num:1,color:'var(--blue)',bg:'var(--bluebg)',title:'Foundation',dates:'Apr – Jun 2026',body:'Advanced Accounting + Taxation. Accountant experience se yeh do subjects fast honge. Theory + ICAI format + answer writing.'},
+    {num:2,color:'var(--purple)',bg:'var(--purplebg)',title:'Theory Heavy',dates:'Jul – Aug 2026',body:'Corporate Laws + Auditing & Ethics. Memory tricks, bare act provisions, SA numbers — sab systematically.'},
+    {num:3,color:'var(--gold)',bg:'var(--goldbg)',title:'Remaining Subjects',dates:'Sep – Oct 2026',body:'Cost Accounting + FM & SM. Daily numericals. RTP aur past papers shuru karo.'},
+    {num:4,color:'var(--green)',bg:'var(--greenbg)',title:'Full Revision',dates:'Nov 2026',body:'Poora syllabus revision. Mock papers, weak areas identify karo. ICAI study material intensive.'},
+    {num:5,color:'var(--red)',bg:'var(--redbg)',title:'Final Sprint',dates:'Dec 2026 – Jan 2027',body:'Full mock tests. Answer speed. High weightage intensive. Examiner mindset se practice.'},
+  ],
+  inter_g1: [
+    {num:1,color:'var(--blue)',bg:'var(--bluebg)',title:'Adv Accounting + Tax',dates:'Apr – Jul 2026',body:'Group 1 ke pehle do subjects — accounting experience kaam aayega.'},
+    {num:2,color:'var(--gold)',bg:'var(--goldbg)',title:'Corporate Laws + CMA',dates:'Aug – Oct 2026',body:'Remaining Group 1 subjects — theory + numericals mix.'},
+    {num:3,color:'var(--green)',bg:'var(--greenbg)',title:'Revision + Mock',dates:'Nov – Jan 2027',body:'Group 1 complete revision, mock tests, past papers.'},
+  ],
+  foundation_default: [
+    {num:1,color:'var(--blue)',bg:'var(--bluebg)',title:'Accounting + Laws',dates:'Month 1-2',body:'Paper 1 & 2 ka foundation banao — core subjects first.'},
+    {num:2,color:'var(--gold)',bg:'var(--goldbg)',title:'Maths + Economics',dates:'Month 3-4',body:'Papers 3 & 4 — maths practice daily, economics theory.'},
+    {num:3,color:'var(--green)',bg:'var(--greenbg)',title:'Revision + Mock',dates:'Month 5-6',body:'Full revision, mock tests, past papers practice.'},
+  ],
+  final_default: [
+    {num:1,color:'var(--blue)',bg:'var(--bluebg)',title:'FR + AFM',dates:'Months 1-3',body:'Core technical papers — Ind AS aur Financial Management.'},
+    {num:2,color:'var(--purple)',bg:'var(--purplebg)',title:'Audit + Laws',dates:'Months 4-5',body:'Theory heavy papers — systematic memory approach.'},
+    {num:3,color:'var(--gold)',bg:'var(--goldbg)',title:'SCM + IBS',dates:'Months 6-7',body:'Application-based papers — case studies + numericals.'},
+    {num:4,color:'var(--green)',bg:'var(--greenbg)',title:'Full Revision',dates:'Month 8',body:'All 6 papers revision — mock tests, past papers.'},
+    {num:5,color:'var(--red)',bg:'var(--redbg)',title:'Final Sprint',dates:'Last month',body:'Speed practice, answer writing, topper strategy.'},
+  ]
+};
+
+function getCurrentPhase() {
+  const now=new Date(); const mo=now.getMonth();
+  if(mo<=5) return {num:1,morning:'Theory reading (current subject)',evening:'Library: New concept + practice problems'};
+  if(mo<=7) return {num:2,morning:'Theory laws reading',evening:'Library: Memory tricks + answer writing'};
+  if(mo<=9) return {num:3,morning:'Numericals practice',evening:'Library: RTP + past papers'};
+  if(mo<=10) return {num:4,morning:'Full revision',evening:'Library: Mock test'};
+  return {num:5,morning:'Sprint revision',evening:'Library: Past papers + speed'};
+}
+
+function renderPlan() {
+  const key = S.level==='inter'?(S.group==='g1'?'inter_g1':'inter_both'):S.level==='foundation'?'foundation_default':'final_default';
+  const phases = PHASES[key]||PHASES.inter_both;
+  document.getElementById('plan-sub').textContent = `${S.name} ka personalized plan · Target: ${S.attempt}`;
+  const cp = getCurrentPhase();
+  if(document.getElementById('plan-phase-badge')) document.getElementById('plan-phase-badge').textContent = 'Phase ' + cp.num;
+  document.getElementById('phases-list').innerHTML = phases.map(p=>`
+    <div class="phase-card"><div class="phase-bar" style="background:${p.color}"></div>
+    <div class="phase-inner"><div class="phase-row">
+      <div class="phase-num" style="background:${p.bg};color:${p.color}">${p.num}</div>
+      <div><div class="phase-title">${p.title}</div><div class="phase-dates">${p.dates}</div></div>
+      ${p.num===cp.num?'<span class="badge bgold" style="margin-left:auto;">Current</span>':''}
+    </div><div class="phase-body">${p.body}</div></div></div>`).join('');
+  renderWeekGrid();
+}
+
+function renderScheduleBlocks() {
+  const blocks = S.job==='working'
+    ? [{t:'7:30–8:30 AM',h:'1h',l:'Morning theory',i:'🌅'},{t:'Travel',h:'45m',l:'Audio/MCQ',i:'🚌'},{t:'Lunch',h:'30m',l:'Quick revision',i:'🍱'},{t:'9:30PM–1AM',h:'3.5h',l:'Library main',i:'🌙'}]
+    : [{t:'Morning',h:'2h',l:'Theory reading',i:'🌅'},{t:'Afternoon',h:'2h',l:'Practice problems',i:'☀️'},{t:'Evening',h:'2h',l:'Revision + MCQ',i:'🌆'},{t:'Night',h:'1h',l:'Next day prep',i:'🌙'}];
+  const total = S.job==='working'?'~5h 45m':S.dailyHours+'h';
+  document.getElementById('total-time').textContent=total;
+  document.getElementById('schedule-blocks').innerHTML=blocks.map(b=>`<div class="card-flat" style="background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:14px;"><div style="font-size:11px;color:var(--text3);margin-bottom:4px;">${b.i} ${b.t}</div><div style="font-family:var(--fh);font-size:22px;font-weight:700;color:var(--text);line-height:1;">${b.h}</div><div style="font-size:11px;color:var(--text2);margin-top:3px;">${b.l}</div></div>`).join('');
+}
+
+// ============ CHAT ============
+const SYS_PROMPT = () => {
+  const levels={inter:'CA Intermediate (New Scheme 2024 — 6 papers, Group 1: Advanced Accounting, Corporate Laws, Taxation; Group 2: Cost Accounting, Auditing, FM+SM)',foundation:'CA Foundation (4 papers: Accounting, Business Laws, Business Maths, Business Economics)',final:'CA Final (New Scheme — 6 papers including FR, AFM, Advanced Auditing, Corporate Laws, SCM, IBS)'};
+  const langs={hindi:'Explain in Hindi, but technical terms can be in English. Student Hindi speaker hai.',hinglish:'Explain in Hinglish — Hindi aur English mix. Casual friendly tone.',english:'Explain clearly in English with examples.'};
+  const bgs={fresh:'Student bilkul fresh hai — zero base se explain karo.',some:'Kuch topics cover kiye hain — briefly revise karo phir aage badho.',work:'Working professional hai — practical examples se connect karo accounting concepts ko.',repeat:'Pehle attempt fail hua — weak areas pe extra focus, confidence build karo.'};
+  return `You are CA Crack AI Tutor — India's best AI-powered CA exam coaching system.
+
+STUDENT PROFILE:
+- Name: ${S.name}
+- CA Level: ${levels[S.level]||levels.inter}
+- Target Exam: ${S.attempt}
+- Group: ${S.group==='both'?'Both Groups':S.group==='g1'?'Group 1':'Group 2'}
+- Daily Study: ${S.dailyHours} hours
+- Job: ${S.job}
+- Background: ${bgs[S.bg]||bgs.fresh}
+- Language: ${langs[S.lang]||langs.hinglish}
+
+TEACHING PHILOSOPHY:
+1. THEORY TOPICS: Concept (simple language) → Memory Trick (Hindi mnemonic) → ICAI Format Answer → Practice Question
+2. PRACTICAL/NUMERICAL: Concept → Worked Example (step by step) → Student Practice Question → Next day revision
+3. ANSWER WRITING: Always show ICAI examiner format. Toppers ka answer format dikhao. Keywords highlight karo.
+4. MCQ PRACTICE: Give MCQs with 4 options. Mark correct answer. Explain WHY others are wrong. ALWAYS remind about negative marking (-25%).
+5. HANDWRITING CHECK: Jab student photo bheje — strict but kind examiner ki tarah marks do. Point out missing keywords, format issues.
+6. MOCK TEST: Time-bound questions do. After completion, score batao, weak areas identify karo.
+
+ICAI EXAM PATTERN (${S.level}):
+- MCQ: 30 marks (negative marking -25% per wrong answer)  
+- Descriptive: 70 marks
+- Passing: 40% per paper + 50% aggregate per group
+
+SPECIAL INSTRUCTIONS:
+- Memory tricks ALWAYS Hindi mein do (easier to remember)
+- ICAI keywords bold karke batao
+- Working student ke limited time ka respect karo — concise rakho
+- Positive aur encouraging rahna — exam ka darr remove karo
+- Jab koi concept explain karo — end mein ek practice question zaroor do`;
+};
+
+function renderChips() {
+  const chipsData = {
+    inter:['📚 Aaj kya padhunga?','Partnership Accounts','GST ITC','Companies Act','SA 200 Auditing','Variance Analysis','Capital Structure','MCQ Practice (5 do)','✍️ Handwriting Q','🎯 Mock Test shuru'],
+    foundation:['📚 Aaj ka plan?','Journal Entries','Business Laws','Statistics MCQ','Economics theory','BCK topics','Practice Q','MCQ Practice'],
+    final:['📚 Aaj ka plan?','Ind AS framework','AFM numericals','Advanced Audit','IBC provisions','Case study help','MCQ Practice']
+  };
+  document.getElementById('chips-wrap').innerHTML=(chipsData[S.level]||chipsData.inter).map(c=>`<div class="chip" onclick="quickAsk('${c}')">${c}</div>`).join('');
+}
+
+let typing=null;
+function addMsg(role,content,save=true) {
+  renderMsg(role,content);
+  if(save){S.chatHistory.push({role,content,t:Date.now()});if(S.chatHistory.length>60)S.chatHistory=S.chatHistory.slice(-60);save_();}
+}
+function save_(){save();}
+function renderMsg(role,content,scroll=true) {
+  const box=document.getElementById('msgs');
+  const d=document.createElement('div');d.className='msg-wrap fade-up '+(role==='user'?'user':'ai');
+  const t=new Date().toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});
+  d.innerHTML=`<div class="bubble">${content.replace(/\n/g,'<br>').replace(/\*\*(.*?)\*\*/g,'<b>$1</b>')}</div><div class="msg-time">${t}</div>`;
+  box.appendChild(d);if(scroll)setTimeout(()=>box.scrollTop=box.scrollHeight,100);
+}
+function showTyping(){const box=document.getElementById('msgs');typing=document.createElement('div');typing.className='msg-wrap ai';typing.innerHTML='<div class="typing-ind"><span></span><span></span><span></span></div>';box.appendChild(typing);setTimeout(()=>box.scrollTop=box.scrollHeight,100);}
+function hideTyping(){if(typing){typing.remove();typing=null;}}
+
+async function sendMsg() {
+  const inp=document.getElementById('chat-in');const txt=inp.value.trim();if(!txt)return;
+  inp.value='';inp.style.height='auto';addMsg('user',txt);showTyping();
+  try {
+    const msgs=[...S.chatHistory.slice(-20).map(m=>({role:m.role==='ai'?'assistant':'user',content:m.content})),{role:'user',content:txt}];
+    const r=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:SYS_PROMPT(),messages:msgs})});
+    const d=await r.json();hideTyping();
+    const reply=d.content?.map(b=>b.text||'').join('')||'Kuch error aaya. Dobara try karo.';
+    addMsg('ai',reply);addXP(5);
+    if(txt.toLowerCase().includes('mcq')){S.mcqDone=(S.mcqDone||0)+1;save();grantBadges();}
+  } catch(e){hideTyping();addMsg('ai',`Yaar, internet connection check karo ya seedha claude.ai pe jao! 🙏\n\nMain tab bhi help karunga — bas wahan apna subject aur sawaal likhna. 💪`);}
+}
+function quickAsk(q){switchPage('chat');const inp=document.getElementById('chat-in');inp.value=q;sendMsg();}
+function clearChat(){S.chatHistory=[];save();document.getElementById('msgs').innerHTML='';addMsg('ai',buildWelcomeMsg());}
+function handleKey(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMsg();}}
+function autoResize(el){el.style.height='auto';el.style.height=Math.min(el.scrollHeight,100)+'px';}
+
+// ============ MCQ ============
+const MCQ_BANK = {
+  inter: [
+    {q:'AS-2 ke mutabik closing stock ki valuation hoti hai:',opts:['Cost ya Market Value — jo zyada ho','Cost ya NRV — jo kam ho','NRV ya Market Value — jo zyada ho','Original Cost pe hamesha'],ans:1,exp:'AS-2 rule: Cost ya NRV (Net Realisable Value) — **JO KAM HO**. Trick: "Kam mein kaam" — conservative principle!'},
+    {q:'Partnership dissolution mein Garner v Murray rule apply hota hai jab:',opts:['Partner profit mein share karta hai','Ek partner insolvent ho jaaye aur deficiency cover na kar sake','Firm ka loss ho','Partnership agreement expire ho'],ans:1,exp:'Garner v Murray: Jab ek partner insolvent ho aur capital deficiency cover na kare — baki partners apne **capital ratio** mein absorb karte hain (profit ratio mein nahi)!'},
+    {q:'Companies Act 2013 Section 2(68) define karta hai:',opts:['Public Company','Private Company','One Person Company','Small Company'],ans:1,exp:'Section 2(68) = **Private Company**. Trick: 2+6+8=16 — Private company mein 2 minimum se 200 maximum members. Ek number — ek definition!'},
+    {q:'GST mein "composite supply" mein principal supply woh hai jo:',opts:['Sab se zyada expensive ho','Naturally bundled supply mein predominant ho','Customer ka pehla choice ho','Government notify kare'],ans:1,exp:'Composite supply mein **principal supply** woh hai jo naturally bundled mein **predominant** hai. Example: Hotel room + breakfast — room principal supply hai!'},
+    {q:'SA 200 ka main objective kya hai?',opts:['Sampling techniques define karna','Auditor ke overall objectives establish karna','Internal audit define karna','Fraud detection methods batana'],ans:1,exp:'SA 200 = **"Overall Objectives of Independent Auditor"** — ye auditing ka foundation hai! Trick: SA 200 = Starting point (200 = S jaisa shape!).'},
+  ],
+  foundation:[
+    {q:'Accrual basis of accounting mein income recognize kiya jaata hai:',opts:['Jab cash receive ho','Jab earned ho chahe cash aaye na aaye','Jab bank mein credit ho','Year end pe'],ans:1,exp:'Accrual basis: Income **tab recognize** karo jab **earn** ho jaaye — cash receipt se koi matlab nahi. Example: December ka rent January mein receive ho toh bhi December income mein.'},
+    {q:'Indian Contract Act 1872 ke according valid contract ke liye zaruri hai:',opts:['Consideration hamesha monetary ho','Free consent of parties','Written agreement mandatory','Government approval'],ans:1,exp:'Valid contract ke 6 essentials: Offer, Acceptance, **Free Consent**, Consideration, Capacity, Legal Object. Free consent ke bina contract voidable hai!'},
+  ],
+  final:[
+    {q:'Ind AS 115 Revenue Recognition ke 5 steps mein Step 2 kya hai?',opts:['Contract identify karo','Performance obligations identify karo','Transaction price determine karo','Revenue recognize karo'],ans:1,exp:'Ind AS 115 ke 5 steps: 1-Contract, **2-Performance Obligations**, 3-Transaction Price, 4-Allocate Price, 5-Recognize Revenue. Trick: "Customer POPRA" — Parties, Obligations, Price, Reflect, Allocate!'},
+  ]
+};
+let mcqIdx=0, mcqAnswered=false, mcqTimer=null;
+
+function openMCQPractice() {
+  const bank=MCQ_BANK[S.level]||MCQ_BANK.inter;
+  mcqIdx=mcqIdx%bank.length;mcqAnswered=false;
+  renderMCQOverlay();openOverlay('overlay-mcq');startMCQTimer();
+}
+function renderMCQOverlay(){
+  const bank=MCQ_BANK[S.level]||MCQ_BANK.inter;const q=bank[mcqIdx%bank.length];
+  document.getElementById('mcq-q-text').innerHTML=q.q;
+  document.getElementById('mcq-q-badge').textContent=`Q ${(mcqIdx%bank.length)+1}/${bank.length}`;
+  document.getElementById('mcq-opts-wrap').innerHTML=q.opts.map((o,i)=>`<div class="mock-opt" id="mopt${i}" onclick="checkMCQAns(${i},${q.ans},'${q.exp.replace(/'/g,"\\'").replace(/\n/g,'\\n')}')""><div class="opt-letter">${'ABCD'[i]}</div>${o}</div>`).join('');
+  document.getElementById('mcq-exp-box').style.display='none';mcqAnswered=false;
+}
+function checkMCQAns(sel,ans,exp){
+  if(mcqAnswered)return;mcqAnswered=true;clearInterval(mcqTimer);
+  document.querySelectorAll('[id^=mopt]').forEach(e=>e.classList.add('disabled'));
+  document.getElementById('mopt'+sel).classList.add(sel===ans?'correct':'wrong');
+  if(sel!==ans)document.getElementById('mopt'+ans).classList.add('correct');
+  const box=document.getElementById('mcq-exp-box');box.style.display='block';
+  box.innerHTML=(sel===ans?'✅ Sahi jawab!':'❌ Galat! Sahi: '+'ABCD'[ans])+'<br><br>'+exp.replace(/\n/g,'<br>')+'<br><br><span style="color:var(--red);font-weight:600">⚠️ Yaad rakho: Galat MCQ pe -25% negative marking!</span>';
+  S.mcqDone=(S.mcqDone||0)+1;addXP(sel===ans?15:0);save();grantBadges();
+}
+function nextMCQ(){mcqIdx++;renderMCQOverlay();startMCQTimer();}
+function startMCQTimer(){clearInterval(mcqTimer);let secs=90;
+  function upd(){const m=Math.floor(secs/60);const s=secs%60;const el=document.getElementById('mcq-timer-badge');if(el)el.textContent=`⏱️ ${m}:${s.toString().padStart(2,'0')}`;if(secs<=0){clearInterval(mcqTimer);if(!mcqAnswered){const bank=MCQ_BANK[S.level]||MCQ_BANK.inter;const q=bank[mcqIdx%bank.length];checkMCQAns(-1,q.ans,q.exp);}}secs--;}
+  upd();mcqTimer=setInterval(upd,1000);
+}
+
+// ============ MOCK TEST ============
+function startMock(type,subj){
+  const times={quick:900,half:5400,full:10800};
+  const prompts={quick:`Mujhe ${subj} ka quick 15-minute mock test do: exactly 5 MCQ questions (negative marking -25% wale) aur 1 short descriptive question. ICAI format mein. Har MCQ ke baad correct answer aur explanation do.`,half:`Mujhe ${subj} ka 90-minute mock test do: 15 MCQ questions aur 3 descriptive questions. ICAI exam jaisa format. Marks allocation clearly batao.`,full:`Mujhe ${subj} ka full 3-hour mock test do: 30 MCQ (30 marks, negative marking) aur 7 descriptive questions (70 marks). Bilkul real ICAI exam jaisa. Time management tips bhi do.`};
+  switchPage('chat');quickAsk(prompts[type]);
+  S.testResults.push({type,subj,date:new Date().toISOString().split('T')[0]});save();grantBadges();
+  toast(`⏱️ ${type==='quick'?'15':type==='half'?'90':'180'} minute mock test shuru!`);
+}
+function goMock(){switchPage('mock');}
+
+// ============ HANDWRITING ============
+let currentHwQ='';
+const HW_QUESTIONS = {
+  inter:['Partnership dissolution mein Realisation Account aur Revaluation Account ka difference samjhao — 8 marks','Companies Act 2013 mein Share Capital ke types explain karo with examples — 10 marks','GST mein Input Tax Credit ke conditions kya hain? 5 marks','SA 315 — Risk Assessment procedures explain karo — 8 marks','Marginal Costing vs Absorption Costing — comparison with example — 12 marks'],
+  foundation:['Accrual concept aur Cash concept ka difference example ke saath — 5 marks','Indian Contract Act mein offer aur acceptance ke rules — 8 marks','Simple Interest vs Compound Interest formula aur example — 5 marks'],
+  final:['Ind AS 115 ke 5 steps explain karo with practical example — 10 marks','Working Capital Management ki importance aur components — 8 marks','Audit Risk model (IR x CR x DR) explain karo — 10 marks']
+};
+function goHandwriting(){
+  const qs=HW_QUESTIONS[S.level]||HW_QUESTIONS.inter;
+  currentHwQ=qs[Math.floor(Math.random()*qs.length)];
+  document.getElementById('hw-q-text').textContent='✍️ Question: '+currentHwQ;
+  const marks=parseInt(currentHwQ.match(/\d+(?= marks)/)?.[0]||'8');
+  document.getElementById('hw-timer-text').textContent=(marks*90/8).toFixed(0)+' seconds (~'+Math.ceil(marks*1.5)+' lines)';
+  openOverlay('overlay-hw');
+  S.hwDone=(S.hwDone||0)+1;save();grantBadges();
+}
+let hwTimer=null;
+function startHWTimer(){
+  const el=document.getElementById('hw-timer-text');const marks=parseInt(currentHwQ.match(/\d+(?= marks)/)?.[0]||'8');
+  let secs=Math.round(marks*90/8);clearInterval(hwTimer);
+  function upd(){if(secs<=0){clearInterval(hwTimer);el.textContent='⏰ Time Up! Photo bhejo AI ko.';toast('⏰ Time up! Answer photo bhejo.');return;}el.textContent=Math.floor(secs/60)+'m '+secs%60+'s remaining';secs--;}
+  upd();hwTimer=setInterval(upd,1000);toast('⏱️ Timer shuru! Copy pe likhna start karo.');
+}
+
+// ============ LEADERBOARD ============
+function showLeaderboard(){
+  const mockUsers=[{name:'Priya S.',xp:2840,level:'Master',avatar:'👩',you:false},{name:'Rahul K.',xp:2210,level:'Expert',avatar:'👨',you:false},{name:S.name||'You',xp:S.xp,level:getLevel().name,avatar:'⭐',you:true},{name:'Anjali M.',xp:980,level:'Scholar',avatar:'👩',you:false},{name:'Vikram R.',xp:720,level:'Scholar',avatar:'👨',you:false},{name:'Sneha T.',xp:450,level:'Student',avatar:'👩',you:false}];
+  mockUsers.sort((a,b)=>b.xp-a.xp);
+  document.getElementById('lb-list').innerHTML=mockUsers.map((u,i)=>`<div class="lb-item ${u.you?'lb-you':''}"><div class="lb-rank" style="color:${i===0?'var(--gold)':i===1?'#c0c0c0':i===2?'#cd7f32':'var(--text3)'}">${i===0?'🥇':i===1?'🥈':i===2?'🥉':i+1}</div><div class="lb-avatar" style="background:var(--bg3)">${u.avatar}</div><div class="lb-info"><div class="lb-name">${u.name}${u.you?' (Aap)':''}</div><div style="font-size:11px;color:var(--text3)">Level: ${u.level}</div></div><div class="lb-xp">${u.xp} XP</div></div>`).join('');
+  openOverlay('overlay-lb');
+}
+
+// ============ NOTIFICATION ============
+function dismissNotif(){document.getElementById('notif-banner').style.display='none';S.notifDismissed=true;save();}
+function setupNotifs(){
+  if(S.notifDismissed)document.getElementById('notif-banner').style.display='none';
+  const now=new Date();const h=now.getHours();
+  let msg='<b>Aaj ka reminder:</b> ';
+  if(h<8)msg+='Subah ka time! Theory reading shuru karo. 📖';
+  else if(h<10)msg+='Job pe jaane se pehle — aaj ka plan check karo. ✅';
+  else if(h>=12&&h<=14)msg+='Lunch break! Quick MCQ practice karo. 📝';
+  else if(h>=21)msg+='Library session time! 3.5 ghante available hain. 🌙';
+  else msg+='Study break mat lo — consistent rahna hai! 💪';
+  document.getElementById('notif-text').innerHTML=msg;
+}
+
+// ============ NAVIGATION ============
+function switchPage(p){
+  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.nb').forEach(x=>x.classList.remove('active'));
+  document.getElementById('page-'+p).classList.add('active');
+  const nb=document.getElementById('nb-'+p);if(nb)nb.classList.add('active');
+  if(p==='chat')setTimeout(()=>{const m=document.getElementById('msgs');m.scrollTop=m.scrollHeight;},100);
+}
+
+// ============ OVERLAY ============
+function openOverlay(id){document.getElementById(id).classList.add('open');}
+function closeOverlay(id){document.getElementById(id).classList.remove('open');}
+
+// ============ TOAST ============
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),3000);}
+
+// ============ PLAN TABS ============
+function showPlanTab(tab) {
+  ['week','phase','time','material'].forEach(t => {
+    document.getElementById('plan-tab-'+t).style.display = t===tab?'block':'none';
+    const btn = document.getElementById('ptab-'+t);
+    btn.className = t===tab ? 'btn btn-gold btn-sm' : 'btn btn-ghost btn-sm';
+  });
+}
+
+// ============ WEEKLY VIEW ============
+const WEEK_TOPICS = {
+  inter_both: {
+    1: ['Advanced Accounting — AS 1-4 (Disclosure)', 'Advanced Accounting — AS 9 Revenue', 'Advanced Accounting — AS 10 PPE', 'Taxation — Residential Status', 'Taxation — Heads of Income Intro', 'Advanced Accounting — Depreciation AS 6', 'Rest/Revision Day'],
+    2: ['Advanced Accounting — Partnership Basics', 'Partnership — Goodwill', 'Partnership — Admission', 'Taxation — Salary Income', 'Taxation — House Property', 'Partnership — Retirement/Death', 'Mock: Adv Accounting Ch 1-3'],
+    3: ['Partnership — Dissolution', 'Company Accounts — Share Capital', 'Company Accounts — Debentures', 'Taxation — Business Income', 'Taxation — Capital Gains', 'Company Accounts — Final Accounts', 'Mock: Taxation Ch 1-3'],
+    4: ['Amalgamation AS 14', 'Branch Accounts', 'AS — Revenue + Provisions', 'Taxation — Other Sources', 'Taxation — TDS/TCS', 'Full Revision: Adv Accounting', 'Mock: Full Adv Accounting Paper'],
+  }
+};
+
+function renderWeekGrid() {
+  const now = new Date();
+  const dayOfWeek = now.getDay(); // 0=Sun
+  const weekStart = new Date(now);
+  weekStart.setDate(now.getDate() - (dayOfWeek === 0 ? 6 : dayOfWeek - 1));
+
+  const days = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'];
+  const fullDays = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+  const today = now.toDateString();
+
+  // Get week number from start date
+  const start = new Date('2026-03-30');
+  const weekNum = Math.max(1, Math.ceil((now - start) / (7*24*60*60*1000)));
+  document.getElementById('week-label').textContent = `Week ${weekNum}`;
+
+  // Topics for this week
+  const topicKey = S.level==='inter'?(S.group==='g1'?'inter_g1':'inter_both'):S.level+'_default';
+  const phaseTopics = WEEK_TOPICS[topicKey] || WEEK_TOPICS.inter_both;
+  const phaseNum = getCurrentPhase().num;
+  const weekTopics = phaseTopics[phaseNum] || phaseTopics[1];
+
+  const html = days.map((d, i) => {
+    const date = new Date(weekStart);
+    date.setDate(weekStart.getDate() + i);
+    const dateStr = date.toDateString();
+    const isToday = dateStr === today;
+    const isPast = date < now && !isToday;
+    const taskDone = S.tasks[dateStr + '_t3'];
+    const isSkipped = S.skippedDays && S.skippedDays[dateStr];
+    const rescheduled = S.rescheduled && S.rescheduled[dateStr];
+    const topic = rescheduled || weekTopics[i] || 'Study session';
+
+    let statusIcon = '';
+    let borderColor = 'var(--border)';
+    if(taskDone) { statusIcon = '✅'; borderColor = 'var(--green)'; }
+    else if(isSkipped) { statusIcon = '⏭️'; borderColor = 'var(--orange)'; }
+    else if(isToday) { statusIcon = '📍'; borderColor = 'var(--gold)'; }
+    else if(isPast) { statusIcon = '⚪'; }
+
+    return `<div style="background:var(--card);border:1.5px solid ${borderColor};border-radius:var(--r);padding:12px;${isToday?'background:rgba(245,200,66,0.05)':''}">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+        <div style="display:flex;align-items:center;gap:6px;">
+          <div style="font-family:var(--fh);font-size:13px;font-weight:700;${isToday?'color:var(--gold)':'color:var(--text2)'}">${fullDays[i]}</div>
+          ${isToday?'<span class="badge bgold" style="font-size:9px;">TODAY</span>':''}
+        </div>
+        <div style="font-size:16px;">${statusIcon}</div>
+      </div>
+      <div style="font-size:12px;color:${isToday?'var(--text)':'var(--text2)'};line-height:1.4;">${topic}</div>
+      ${isToday && !taskDone ? `<button onclick="openSkipModal()" style="margin-top:8px;padding:5px 10px;background:var(--redbg);border:none;border-radius:var(--rs);font-size:11px;color:var(--red);cursor:pointer;font-family:var(--fb);">Skip/Reschedule</button>` : ''}
+      ${!isToday && !isPast && !taskDone ? `<button onclick="editDayTopic('${dateStr}', '${topic.replace(/'/g,"\\'")}', ${i})" style="margin-top:8px;padding:5px 10px;background:var(--bluebg);border:none;border-radius:var(--rs);font-size:11px;color:var(--blue);cursor:pointer;font-family:var(--fb);">✏️ Edit</button>` : ''}
+    </div>`;
+  }).join('');
+
+  document.getElementById('week-grid').innerHTML = html;
+}
+
+function editDayTopic(dateStr, currentTopic, dayIdx) {
+  const newTopic = prompt(`${['Mon','Tue','Wed','Thu','Fri','Sat','Sun'][dayIdx]} ka topic edit karo:`, currentTopic);
+  if(newTopic && newTopic.trim()) {
+    if(!S.rescheduled) S.rescheduled = {};
+    S.rescheduled[dateStr] = newTopic.trim();
+    save(); renderWeekGrid();
+    toast('✅ Topic updated!');
+  }
+}
+
+// ============ RESCHEDULE / SKIP ============
+let skipReason = '';
+
+function selectSkipReason(r) {
+  skipReason = r;
+  ['tired','work','personal','sick','other'].forEach(x => {
+    const el = document.getElementById('sr-'+x);
+    el.classList.toggle('selected', x===r);
+    el.querySelector('.ob-check').textContent = x===r ? '✓' : '';
+  });
+}
+
+function openSkipModal() { skipReason = ''; openOverlay('overlay-skip'); }
+
+function reschedule(when) {
+  const today = new Date().toDateString();
+  if(!S.skippedDays) S.skippedDays = {};
+  if(!S.rescheduled) S.rescheduled = {};
+
+  // Get today's topic
+  const phaseTopics = WEEK_TOPICS.inter_both;
+  const phaseNum = getCurrentPhase().num;
+  const weekTopics = phaseTopics[phaseNum] || phaseTopics[1];
+  const dayIdx = (new Date().getDay() + 6) % 7;
+  const todayTopic = weekTopics[dayIdx] || 'Study session';
+
+  if(when === 'tomorrow') {
+    const tomorrow = new Date(); tomorrow.setDate(tomorrow.getDate()+1);
+    S.rescheduled[tomorrow.toDateString()] = todayTopic + ' (rescheduled)';
+    toast('📅 Kal pe shift ho gaya!');
+  } else {
+    const sun = new Date(); sun.setDate(sun.getDate() + (7 - sun.getDay()));
+    S.rescheduled[sun.toDateString()] = todayTopic + ' (rescheduled)';
+    toast('📅 Weekend pe shift ho gaya!');
+  }
+}
+
+function confirmSkip() {
+  if(!skipReason) { toast('Pehle reason select karo!'); return; }
+  const today = new Date().toDateString();
+  if(!S.skippedDays) S.skippedDays = {};
+  S.skippedDays[today] = skipReason;
+
+  // Streak impact
+  const encouragements = {
+    tired: '😴 Rest karo — kal fresh start!',
+    work: '💼 Job pressure — samajh aata hai. Kal pakka!',
+    personal: '👨‍👩‍👧 Family important hai. Kal wapas aao!',
+    sick: '🤒 Jaldi theek ho — health first!',
+    other: '📝 Noted. Kal se strong comeback!'
+  };
+  toast(encouragements[skipReason] || 'Koi baat nahi — kal aana!');
+  closeOverlay('overlay-skip');
+  save(); renderWeekGrid();
+
+  // Ask AI for adjusted plan
+  setTimeout(() => {
+    switchPage('chat');
+    quickAsk(`Aaj ka session skip ho gaya — reason: ${skipReason}. Kal ka compensatory plan banao aur streak maintain karne ke tips do. Mujhe motivate karo bhi!`);
+  }, 500);
+}
+
+// ============ COPY PROMPT ============
+function copyPrompt() {
+  const text = document.getElementById('upload-prompt-box').textContent;
+  navigator.clipboard.writeText(text).then(() => toast('📋 Prompt copy ho gaya!')).catch(() => toast('Manually copy karo — select all from box'));
+}
+
+// ============ OVERRIDE initApp to include weekly ============
+const _origInitApp = initApp;
+
+if(S.onboarded){
+  document.getElementById('onboarding').style.display='none';
+  document.getElementById('main-app').style.cssText='display:flex;flex-direction:column;height:100%';
+  document.getElementById('main-nav').style.display='flex';
+  initApp();setupNotifs();
+} else {
+  document.getElementById('main-app').style.display='none';
+  document.getElementById('main-nav').style.display='none';
+}
+
+// SERVICE WORKER
+if('serviceWorker' in navigator){
+  const sw=`const C='cacrak-v1';self.addEventListener('install',e=>e.waitUntil(caches.open(C).then(c=>c.add('/'))));self.addEventListener('fetch',e=>e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request))));`;
+  navigator.serviceWorker.register(URL.createObjectURL(new Blob([sw],{type:'application/javascript'}))).catch(()=>{});
+}
+</script>
+</body>
+</html>
